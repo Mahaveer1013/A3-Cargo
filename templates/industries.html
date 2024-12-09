@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industries Served</title>
+    <script src="./assets/js/main.js" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./assets/css/styles.css">
+</head>
+
+<body class="bg-gray-900 text-gray-100">
+
+    <!-- Navbar -->
+    <nav class="flex justify-between items-center p-5 bg-gray-800">
+        <a href="index.html" class="text-xl font-bold text-blue-400">A3 Express Cargo</a>
+        <div class="flex space-x-4 hidden md:flex">
+            <a href="index.html" class="hover:text-blue-400">Home</a>
+            <a href="about.html" class="hover:text-blue-400 text-blue-400">About Us</a>
+            <a href="services.html" class="hover:text-blue-400">Services</a>
+            <a href="industries.html" class="hover:text-blue-400">Industries</a>
+            <a href="cases.html" class="hover:text-blue-400">Case Studies</a>
+            <a href="resources.html" class="hover:text-blue-400">Resources</a>
+            <a href="contact.html" class="hover:text-blue-400">Contact Us</a>
+            <a href="blog.html" class="hover:text-blue-400">Blog</a>
+        </div>
+        <!-- Hamburger Menu -->
+        <div class="md:hidden" onclick="toggleMenu()">
+            <div class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Navbar -->
+    <div class="mobile-nav" id="mobile-nav">
+        <div class="flex justify-end p-5">
+            <button onclick="toggleMenu()" class="text-white text-3xl">&times;</button>
+        </div>
+        <div class="space-y-4 flex flex-col">
+            <a href="index.html" class="nav-item">Home</a>
+            <a href="about.html" class="nav-item text-blue-400">About Us</a>
+            <a href="services.html" class="nav-item">Services</a>
+            <a href="industries.html" class="nav-item">Industries</a>
+            <a href="cases.html" class="nav-item">Case Studies</a>
+            <a href="resources.html" class="nav-item">Resources</a>
+            <a href="contact.html" class="nav-item">Contact Us</a>
+            <a href="blog.html" class="nav-item">Blog</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="py-20 text-center bg-gray-800">
+        <h1 class="text-4xl font-bold text-blue-400">Industries We Serve</h1>
+        <p class="mt-4 text-lg text-gray-300 max-w-2xl mx-auto">We specialize in providing tailored solutions to diverse
+            industries, ensuring seamless export and import services, compliance, and cost-effective logistics for your
+            business needs.</p>
+    </section>
+
+    <!-- Industries Section -->
+    <section class="py-10 px-5">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Agricultural Products -->
+            <div
+                class="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow transform hover:scale-105">
+                <h2 class="text-xl font-bold text-blue-400">Agricultural Products</h2>
+                <p class="mt-4 text-gray-300">We provide comprehensive export services for fresh produce, grains, dairy,
+                    and other agricultural products, ensuring compliance with global standards and efficient logistics.
+                </p>
+                <ul class="list-disc pl-5 mt-4 text-gray-300">
+                    <li>Fresh Produce Export</li>
+                    <li>Grains & Cereals</li>
+                    <li>Livestock & Dairy</li>
+                </ul>
+            </div>
+
+            <!-- Manufactured Goods -->
+            <div
+                class="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow transform hover:scale-105">
+                <h2 class="text-xl font-bold text-blue-400">Manufactured Goods</h2>
+                <p class="mt-4 text-gray-300">From heavy machinery to textiles and electronics, we handle the logistics
+                    and documentation for seamless export of manufactured goods to international markets.</p>
+                <ul class="list-disc pl-5 mt-4 text-gray-300">
+                    <li>Machinery & Equipment</li>
+                    <li>Textiles & Apparel</li>
+                    <li>Electronics & Consumer Goods</li>
+                </ul>
+            </div>
+
+            <!-- Consumer Goods -->
+            <div
+                class="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow transform hover:scale-105">
+                <h2 class="text-xl font-bold text-blue-400">Consumer Goods</h2>
+                <p class="mt-4 text-gray-300">We specialize in the export of various consumer goods, including fashion,
+                    beauty products, home essentials, and electronics, ensuring timely delivery and quality assurance.
+                </p>
+                <ul class="list-disc pl-5 mt-4 text-gray-300">
+                    <li>Fashion & Apparel</li>
+                    <li>Beauty & Health Products</li>
+                    <li>Household Essentials</li>
+                </ul>
+            </div>
+
+            <!-- Specialized Services -->
+            <div
+                class="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow transform hover:scale-105">
+                <h2 class="text-xl font-bold text-blue-400">Specialized Services</h2>
+                <p class="mt-4 text-gray-300">We offer specialized services for handling delicate, perishable,
+                    oversized, or time-sensitive shipments with customized solutions for unique industry needs.</p>
+                <ul class="list-disc pl-5 mt-4 text-gray-300">
+                    <li>Perishable Goods Handling</li>
+                    <li>Oversized & Heavy Shipments</li>
+                    <li>Time-Sensitive Deliveries</li>
+                </ul>
+            </div>
+
+            <!-- Automotive Parts -->
+            <div
+                class="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow transform hover:scale-105">
+                <h2 class="text-xl font-bold text-blue-400">Automotive Parts</h2>
+                <p class="mt-4 text-gray-300">We assist in exporting automotive parts, ensuring high standards for
+                    quality control, packaging, and compliance with transportation regulations.</p>
+                <ul class="list-disc pl-5 mt-4 text-gray-300">
+                    <li>Engine Components</li>
+                    <li>Electrical & Electronics Parts</li>
+                    <li>Vehicle Accessories</li>
+                </ul>
+            </div>
+
+            <!-- Pharmaceuticals -->
+            <div
+                class="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow transform hover:scale-105">
+                <h2 class="text-xl font-bold text-blue-400">Pharmaceuticals</h2>
+                <p class="mt-4 text-gray-300">We provide secure and compliant transportation for pharmaceutical
+                    products, ensuring temperature control and adherence to international regulations for safe delivery.
+                </p>
+                <ul class="list-disc pl-5 mt-4 text-gray-300">
+                    <li>Temperature-Controlled Shipments</li>
+                    <li>Regulatory Compliance</li>
+                    <li>Global Reach</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-10 bg-gray-800 text-center">
+        <h2 class="text-2xl font-bold text-blue-400">Ready to Expand Your Reach?</h2>
+        <p class="mt-4 text-lg text-gray-300">Our experienced team is ready to help you navigate global trade
+            challenges. Let's talk about how we can assist your business in achieving seamless export and import
+            solutions.</p>
+        <a href="contact.html"
+            class="inline-block mt-6 py-3 px-6 bg-blue-400 text-gray-900 font-bold rounded-lg hover:bg-blue-500 transition-colors">Get
+            in Touch</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 p-5 text-center">
+        <p class="text-gray-400">Follow us:</p>
+        <div class="flex justify-center space-x-6 mt-2">
+            <a href="#" class="hover:text-blue-400">Facebook</a>
+            <a href="#" class="hover:text-blue-400">Twitter</a>
+            <a href="#" class="hover:text-blue-400">LinkedIn</a>
+            <a href="#" class="hover:text-blue-400">Instagram</a>
+        </div>
+        <p class="mt-4 text-gray-500">&copy; 2024 A3 Express Cargo. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources</title>
+    <script src="./assets/js/main.js" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./assets/css/styles.css">
+</head>
+
+<body class="bg-gray-900 text-gray-100">
+
+    <!-- Navbar -->
+    <nav class="flex justify-between items-center p-5 bg-gray-800">
+        <a href="index.html" class="text-xl font-bold text-blue-400">A3 Express Cargo</a>
+        <div class="flex space-x-4 hidden md:flex">
+            <a href="index.html" class="hover:text-blue-400">Home</a>
+            <a href="about.html" class="hover:text-blue-400 text-blue-400">About Us</a>
+            <a href="services.html" class="hover:text-blue-400">Services</a>
+            <a href="industries.html" class="hover:text-blue-400">Industries</a>
+            <a href="cases.html" class="hover:text-blue-400">Case Studies</a>
+            <a href="resources.html" class="hover:text-blue-400">Resources</a>
+            <a href="contact.html" class="hover:text-blue-400">Contact Us</a>
+            <a href="blog.html" class="hover:text-blue-400">Blog</a>
+        </div>
+        <!-- Hamburger Menu -->
+        <div class="md:hidden" onclick="toggleMenu()">
+            <div class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Navbar -->
+    <div class="mobile-nav" id="mobile-nav">
+        <div class="flex justify-end p-5">
+            <button onclick="toggleMenu()" class="text-white text-3xl">&times;</button>
+        </div>
+        <div class="space-y-4 flex flex-col">
+            <a href="index.html" class="nav-item">Home</a>
+            <a href="about.html" class="nav-item text-blue-400">About Us</a>
+            <a href="services.html" class="nav-item">Services</a>
+            <a href="industries.html" class="nav-item">Industries</a>
+            <a href="cases.html" class="nav-item">Case Studies</a>
+            <a href="resources.html" class="nav-item">Resources</a>
+            <a href="contact.html" class="nav-item">Contact Us</a>
+            <a href="blog.html" class="nav-item">Blog</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="py-16 text-center bg-gray-800 rounded-b-3xl shadow-lg mb-12">
+        <h1 class="text-5xl font-bold text-blue-400">Resources to Grow Your Business</h1>
+        <p class="mt-4 text-lg text-gray-300 max-w-2xl mx-auto">Access our curated selection of resources to enhance
+            your knowledge and stay ahead of the competition in your industry.</p>
+    </section>
+
+    <!-- Resources Section -->
+    <section class="py-16 px-5 bg-gray-900">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Blog Posts -->
+            <div class="bg-gray-800 p-6 rounded-lg shadow-xl hover:shadow-2xl transition-all">
+                <h2 class="text-2xl font-bold text-blue-400">Blogs</h2>
+                <p class="mt-4 text-gray-300">Stay updated with our latest blog posts covering industry trends, expert
+                    advice, and tips to grow your business.</p>
+                <a href="blog.html"
+                    class="inline-block mt-4 py-2 px-6 bg-blue-400 text-gray-900 font-semibold rounded-lg hover:bg-blue-500 transition-colors">Explore
+                    Blogs</a>
+            </div>
+
+            <!-- White Papers -->
+            <div class="bg-gray-800 p-6 rounded-lg shadow-xl hover:shadow-2xl transition-all">
+                <h2 class="text-2xl font-bold text-blue-400">White Papers</h2>
+                <p class="mt-4 text-gray-300">Download comprehensive white papers and gain valuable insights into key
+                    industry challenges and solutions.</p>
+                <a href="#"
+                    class="inline-block mt-4 py-2 px-6 bg-blue-400 text-gray-900 font-semibold rounded-lg hover:bg-blue-500 transition-colors">View
+                    White Papers</a>
+            </div>
+
+            <!-- FAQs -->
+            <div class="bg-gray-800 p-6 rounded-lg shadow-xl hover:shadow-2xl transition-all">
+                <h2 class="text-2xl font-bold text-blue-400">FAQs</h2>
+                <p class="mt-4 text-gray-300">Find answers to frequently asked questions about our services, processes,
+                    and more.</p>
+                <a href="#faqs"
+                    class="inline-block mt-4 py-2 px-6 bg-blue-400 text-gray-900 font-semibold rounded-lg hover:bg-blue-500 transition-colors">Browse
+                    FAQs</a>
+            </div>
+
+            <!-- Videos -->
+            <div class="bg-gray-800 p-6 rounded-lg shadow-xl hover:shadow-2xl transition-all">
+                <h2 class="text-2xl font-bold text-blue-400">Videos</h2>
+                <p class="mt-4 text-gray-300">Watch our educational and product demo videos to get an in-depth
+                    understanding of our services.</p>
+                <a href="#"
+                    class="inline-block mt-4 py-2 px-6 bg-blue-400 text-gray-900 font-semibold rounded-lg hover:bg-blue-500 transition-colors">Watch
+                    Videos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQs Section -->
+    <section id="faqs" class="py-16 px-5 bg-gray-800">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold text-blue-400">Frequently Asked Questions</h2>
+            <div class="mt-6 space-y-6">
+                <div class="p-5 bg-gray-700 rounded-lg">
+                    <h3 class="text-xl font-semibold text-blue-400">Q: What services do you offer?</h3>
+                    <p class="text-gray-300 mt-2">A: We offer comprehensive export/import management, global logistics
+                        solutions, customs brokerage, and consulting services tailored to your needs.</p>
+                </div>
+                <div class="p-5 bg-gray-700 rounded-lg">
+                    <h3 class="text-xl font-semibold text-blue-400">Q: How can I contact your team?</h3>
+                    <p class="text-gray-300 mt-2">A: You can reach our team through our <a href="contact.html"
+                            class="text-blue-400 hover:underline">Contact Us</a> page or email us directly at contact@A3
+                        Express Cargo.com.</p>
+                </div>
+                <div class="p-5 bg-gray-700 rounded-lg">
+                    <h3 class="text-xl font-semibold text-blue-400">Q: Do you serve international clients?</h3>
+                    <p class="text-gray-300 mt-2">A: Yes, we work with clients across the globe, providing customized
+                        logistics and consulting services to meet international needs.</p>
+                </div>
+                <div class="p-5 bg-gray-700 rounded-lg">
+                    <h3 class="text-xl font-semibold text-blue-400">Q: Are your resources free to access?</h3>
+                    <p class="text-gray-300 mt-2">A: Most of our resources are freely available on our website. However,
+                        some advanced materials, like white papers, may require registration.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-10 text-center bg-gray-800">
+        <h2 class="text-3xl font-bold text-blue-400">Get More Resources</h2>
+        <p class="text-gray-300 mt-4 max-w-xl mx-auto">Join our community to get exclusive access to webinars, research,
+            and new resources delivered directly to your inbox.</p>
+        <a href="contact.html"
+            class="inline-block px-6 py-3 mt-5 bg-blue-400 text-gray-900 font-bold rounded-lg hover:bg-blue-500 transition-colors">Contact
+            Us</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 p-5 text-center">
+        <p>Follow us on social media:</p>
+        <div class="flex justify-center space-x-4 mt-2">
+            <a href="#" class="hover:text-blue-400">Facebook</a>
+            <a href="#" class="hover:text-blue-400">Twitter</a>
+            <a href="#" class="hover:text-blue-400">LinkedIn</a>
+            <a href="#" class="hover:text-blue-400">Instagram</a>
+        </div>
+        <p class="mt-4 text-gray-500">&copy; 2024 A3 Express Cargo. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>

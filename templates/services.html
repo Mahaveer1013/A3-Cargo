@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services</title>
+    <script src="./assets/js/main.js" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./assets/css/styles.css">
+</head>
+
+<body class="bg-gray-900 text-gray-100">
+
+    <!-- Navbar -->
+    <nav class="flex justify-between items-center p-5 bg-gray-800">
+        <a href="index.html" class="text-xl font-bold text-blue-400">A3 Express Cargo</a>
+        <div class="flex space-x-4 hidden md:flex">
+            <a href="index.html" class="hover:text-blue-400">Home</a>
+            <a href="about.html" class="hover:text-blue-400 text-blue-400">About Us</a>
+            <a href="services.html" class="hover:text-blue-400">Services</a>
+            <a href="industries.html" class="hover:text-blue-400">Industries</a>
+            <a href="cases.html" class="hover:text-blue-400">Case Studies</a>
+            <a href="resources.html" class="hover:text-blue-400">Resources</a>
+            <a href="contact.html" class="hover:text-blue-400">Contact Us</a>
+            <a href="blog.html" class="hover:text-blue-400">Blog</a>
+        </div>
+        <!-- Hamburger Menu -->
+        <div class="md:hidden" onclick="toggleMenu()">
+            <div class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Navbar -->
+    <div class="mobile-nav" id="mobile-nav">
+        <div class="flex justify-end p-5">
+            <button onclick="toggleMenu()" class="text-white text-3xl">&times;</button>
+        </div>
+        <div class="space-y-4 flex flex-col">
+            <a href="index.html" class="nav-item">Home</a>
+            <a href="about.html" class="nav-item text-blue-400">About Us</a>
+            <a href="services.html" class="nav-item">Services</a>
+            <a href="industries.html" class="nav-item">Industries</a>
+            <a href="cases.html" class="nav-item">Case Studies</a>
+            <a href="resources.html" class="nav-item">Resources</a>
+            <a href="contact.html" class="nav-item">Contact Us</a>
+            <a href="blog.html" class="nav-item">Blog</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="py-16 text-center bg-gradient-to-r from-blue-800 to-blue-600">
+        <h1 class="text-5xl font-bold text-white">Our Expert Services</h1>
+        <p class="mt-4 text-lg text-gray-200 max-w-3xl mx-auto">We offer a wide range of services tailored to streamline
+            global trade, providing solutions that meet the needs of businesses of all sizes. Explore our expertise.</p>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-16 px-6 lg:px-24">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 max-w-7xl mx-auto">
+            <!-- Service 1 -->
+            <div class="bg-gray-800 rounded-lg shadow-lg overflow-hidden group transform hover:scale-105 transition">
+                <img src="https://via.placeholder.com/600x400" alt="Export Management"
+                    class="w-full h-48 object-cover group-hover:opacity-80 transition">
+                <div class="p-6">
+                    <h2 class="text-2xl font-semibold text-blue-400">Export Management</h2>
+                    <p class="text-gray-300 mt-2">We offer comprehensive export management services, helping you
+                        navigate international regulations, ensure compliance, and streamline the entire process from
+                        start to finish.</p>
+                    <a href="#" class="mt-4 inline-block text-blue-400 hover:underline">Learn More</a>
+                </div>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="bg-gray-800 rounded-lg shadow-lg overflow-hidden group transform hover:scale-105 transition">
+                <img src="https://via.placeholder.com/600x400" alt="Import Management"
+                    class="w-full h-48 object-cover group-hover:opacity-80 transition">
+                <div class="p-6">
+                    <h2 class="text-2xl font-semibold text-blue-400">Import Management</h2>
+                    <p class="text-gray-300 mt-2">Our import management services ensure smooth and hassle-free processes
+                        for bringing goods into your country, from customs brokerage to final delivery, with complete
+                        regulatory compliance.</p>
+                    <a href="#" class="mt-4 inline-block text-blue-400 hover:underline">Learn More</a>
+                </div>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="bg-gray-800 rounded-lg shadow-lg overflow-hidden group transform hover:scale-105 transition">
+                <img src="https://via.placeholder.com/600x400" alt="Logistics and Freight"
+                    class="w-full h-48 object-cover group-hover:opacity-80 transition">
+                <div class="p-6">
+                    <h2 class="text-2xl font-semibold text-blue-400">Logistics and Freight</h2>
+                    <p class="text-gray-300 mt-2">With our global logistics network, we ensure that your goods are
+                        delivered efficiently and securely to any destination. Our freight services guarantee timely and
+                        cost-effective solutions.</p>
+                    <a href="#" class="mt-4 inline-block text-blue-400 hover:underline">Learn More</a>
+                </div>
+            </div>
+
+            <!-- Service 4 -->
+            <div class="bg-gray-800 rounded-lg shadow-lg overflow-hidden group transform hover:scale-105 transition">
+                <img src="https://via.placeholder.com/600x400" alt="Customs Brokerage"
+                    class="w-full h-48 object-cover group-hover:opacity-80 transition">
+                <div class="p-6">
+                    <h2 class="text-2xl font-semibold text-blue-400">Customs Brokerage</h2>
+                    <p class="text-gray-300 mt-2">Our customs brokerage services ensure that your imports and exports
+                        comply with all relevant regulations. We manage documentation, duties, and tariffs to keep your
+                        business running smoothly.</p>
+                    <a href="#" class="mt-4 inline-block text-blue-400 hover:underline">Learn More</a>
+                </div>
+            </div>
+
+            <!-- Service 5 -->
+            <div class="bg-gray-800 rounded-lg shadow-lg overflow-hidden group transform hover:scale-105 transition">
+                <img src="https://via.placeholder.com/600x400" alt="Consulting Services"
+                    class="w-full h-48 object-cover group-hover:opacity-80 transition">
+                <div class="p-6">
+                    <h2 class="text-2xl font-semibold text-blue-400">Consulting Services</h2>
+                    <p class="text-gray-300 mt-2">Our experienced consultants provide strategic guidance to help your
+                        business navigate global trade complexities, from risk management to identifying new market
+                        opportunities.</p>
+                    <a href="#" class="mt-4 inline-block text-blue-400 hover:underline">Learn More</a>
+                </div>
+            </div>
+
+            <!-- Service 6 -->
+            <div class="bg-gray-800 rounded-lg shadow-lg overflow-hidden group transform hover:scale-105 transition">
+                <img src="https://via.placeholder.com/600x400" alt="Risk Management"
+                    class="w-full h-48 object-cover group-hover:opacity-80 transition">
+                <div class="p-6">
+                    <h2 class="text-2xl font-semibold text-blue-400">Risk Management</h2>
+                    <p class="text-gray-300 mt-2">We offer comprehensive risk management services to protect your
+                        international business from potential threats. From financial risks to geopolitical
+                        uncertainties, we help mitigate challenges.</p>
+                    <a href="#" class="mt-4 inline-block text-blue-400 hover:underline">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 py-6 text-center">
+        <p class="text-gray-400">Follow us:</p>
+        <div class="flex justify-center space-x-6 mt-2">
+            <a href="#" class="text-blue-400 hover:text-blue-500 transition">Facebook</a>
+            <a href="#" class="text-blue-400 hover:text-blue-500 transition">Twitter</a>
+            <a href="#" class="text-blue-400 hover:text-blue-500 transition">LinkedIn</a>
+            <a href="#" class="text-blue-400 hover:text-blue-500 transition">Instagram</a>
+        </div>
+        <p class="mt-4 text-gray-500">&copy; 2024 A3 Express Cargo. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>

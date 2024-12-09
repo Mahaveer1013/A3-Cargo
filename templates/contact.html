@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <script src="./assets/js/main.js" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./assets/css/styles.css">
+</head>
+
+<body class="bg-gray-900 text-gray-100">
+
+    <!-- Navbar -->
+    <nav class="flex justify-between items-center p-5 bg-gray-800">
+        <a href="index.html" class="text-xl font-bold text-blue-400">A3 Express Cargo</a>
+        <div class="flex space-x-4 hidden md:flex">
+            <a href="index.html" class="hover:text-blue-400">Home</a>
+            <a href="about.html" class="hover:text-blue-400 text-blue-400">About Us</a>
+            <a href="services.html" class="hover:text-blue-400">Services</a>
+            <a href="industries.html" class="hover:text-blue-400">Industries</a>
+            <a href="cases.html" class="hover:text-blue-400">Case Studies</a>
+            <a href="resources.html" class="hover:text-blue-400">Resources</a>
+            <a href="contact.html" class="hover:text-blue-400">Contact Us</a>
+            <a href="blog.html" class="hover:text-blue-400">Blog</a>
+        </div>
+        <!-- Hamburger Menu -->
+        <div class="md:hidden" onclick="toggleMenu()">
+            <div class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Navbar -->
+    <div class="mobile-nav" id="mobile-nav">
+        <div class="flex justify-end p-5">
+            <button onclick="toggleMenu()" class="text-white text-3xl">&times;</button>
+        </div>
+        <div class="space-y-4 flex flex-col">
+            <a href="index.html" class="nav-item">Home</a>
+            <a href="about.html" class="nav-item text-blue-400">About Us</a>
+            <a href="services.html" class="nav-item">Services</a>
+            <a href="industries.html" class="nav-item">Industries</a>
+            <a href="cases.html" class="nav-item">Case Studies</a>
+            <a href="resources.html" class="nav-item">Resources</a>
+            <a href="contact.html" class="nav-item">Contact Us</a>
+            <a href="blog.html" class="nav-item">Blog</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="py-20 text-center bg-gray-800">
+        <h1 class="text-5xl font-extrabold text-blue-400">Contact Us</h1>
+        <p class="mt-6 text-lg text-gray-300 max-w-2xl mx-auto">We’d love to hear from you! Reach out to us for
+            inquiries, support, or to get more information about our services.</p>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="py-16 px-5 bg-gray-800">
+        <div class="max-w-4xl mx-auto bg-gray-700 p-8 rounded-lg shadow-xl">
+            <h2 class="text-3xl font-semibold text-blue-400 mb-6">Get in Touch</h2>
+            <form action="#" method="POST" class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="name" class="block text-gray-300 mb-2">Your Name</label>
+                        <input type="text" id="name" name="name" required
+                            class="w-full p-3 bg-gray-600 text-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-gray-300 mb-2">Email Address</label>
+                        <input type="email" id="email" name="email" required
+                            class="w-full p-3 bg-gray-600 text-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+                    </div>
+                </div>
+                <div>
+                    <label for="message" class="block text-gray-300 mb-2">Message</label>
+                    <textarea id="message" name="message" rows="5" required
+                        class="w-full p-3 bg-gray-600 text-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"></textarea>
+                </div>
+                <button type="submit"
+                    class="w-full py-3 bg-blue-400 text-gray-900 font-semibold rounded-lg hover:bg-blue-500 transition-colors">Send
+                    Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact Information Section -->
+    <section class="py-16 bg-gray-800">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-semibold text-blue-400 mb-6">Contact Information</h2>
+            <p class="text-lg text-gray-300">We are available for queries or support via the following channels:</p>
+            <div class="mt-6 space-y-4">
+                <p><strong class="text-blue-400">Phone:</strong> +123 456 7890</p>
+                <p><strong class="text-blue-400">Email:</strong> <a href="mailto:support@A3 Express Cargo.com"
+                        class="hover:underline text-blue-400">support@A3 Express Cargo.com</a></p>
+                <p><strong class="text-blue-400">Address:</strong> 123 Business St, City, Country</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Links Section -->
+    <section class="py-10 bg-gray-900">
+        <div class="text-center">
+            <h2 class="text-2xl font-semibold text-blue-400 mb-4">Follow Us</h2>
+            <div class="flex justify-center space-x-8">
+                <a href="#" class="text-gray-300 hover:text-blue-400"><i class="fab fa-facebook-f text-2xl"></i></a>
+                <a href="#" class="text-gray-300 hover:text-blue-400"><i class="fab fa-twitter text-2xl"></i></a>
+                <a href="#" class="text-gray-300 hover:text-blue-400"><i class="fab fa-linkedin-in text-2xl"></i></a>
+                <a href="#" class="text-gray-300 hover:text-blue-400"><i class="fab fa-instagram text-2xl"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 p-5 text-center">
+        <p class="text-gray-500">© 2024 A3 Express Cargo. All Rights Reserved. Privacy Policy | Terms of Service</p>
+    </footer>
+
+    <!-- FontAwesome for social media icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
