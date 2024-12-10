@@ -5,18 +5,21 @@ import Footer from "./components/Footer";
 import About from "./pages/About";
 import Services from "./pages/Services";
 import ContactUs from "./pages/ContactUs";
+import ScrollToTop from "./components/ScrollToTop";
+import Products from "./pages/Products";
 
 function App() {
   return (
     <>
       <HashRouter>
         <Navbar />
+        <ScrollToTop />
         <main className="flex-grow pt-[64px] ">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
-            <Route path="/products" element={<Services />} />
+            <Route path="/products" element={<Products />} />
             <Route path="/contact" element={<ContactUs />} />
           </Routes>
         </main>

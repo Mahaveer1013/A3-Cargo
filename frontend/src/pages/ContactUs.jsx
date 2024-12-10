@@ -1,9 +1,7 @@
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import {
-  FontAwesomeIcon,
-} from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEnvelope,
   faMapMarkerAlt,
@@ -20,7 +18,7 @@ const ContactUs = () => {
     if (contactUsSection) {
       contactUsSection.scrollIntoView({ behavior: "smooth" });
     }
-  }
+  };
 
   return (
     <div className="font-sans overflow-hidden">
@@ -127,7 +125,10 @@ const ContactUs = () => {
                     icon={faMapMarkerAlt}
                     className="text-blue-600 text-2xl mr-4"
                   />
-                  <p className="text-lg text-gray-700">Comapny</p>
+                  <p className="text-lg text-gray-700">
+                    20 Sundaram 3rd Street FIRST LINE,VYASARPADI Chennai,
+                    600039, CHENNAI, TAMIL NADU
+                  </p>
                 </div>
               </div>
             </div>
@@ -159,7 +160,7 @@ const ContactUs = () => {
               <p className="text-gray-700 mt-2">
                 A: You can reach our team through our{" "}
                 <button
-                  onClick={handleScrollToTop}                  
+                  onClick={handleScrollToTop}
                   className="text-blue-400 hover:underline"
                 >
                   Contact Us

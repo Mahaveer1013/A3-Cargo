@@ -3,6 +3,12 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import image1 from "../assets/image1.png";
 import ContactBanner from "../components/ContactBanner";
+import exportService from "../assets/services/export.png";
+import logisticService from "../assets/services/logistics.png";
+import packingService from "../assets/services/packing.png";
+import consultingService from "../assets/services/consulting.png";
+import warehousingService from "../assets/services/warehousing.png";
+import frieghtService from "../assets/services/frieght.png";
 
 const Home = () => {
   useEffect(() => {
@@ -102,35 +108,35 @@ const Home = () => {
                   title: "Export Services",
                   description:
                     "Comprehensive export services to global destinations.",
-                  img: "/path-to-export-service-image.jpg",
+                  img: exportService,
                 },
                 {
                   title: "Logistics",
                   description: "Efficient and reliable logistics management.",
-                  img: "/path-to-logistics-image.jpg",
+                  img: logisticService,
                 },
                 {
                   title: "Packing",
                   description:
                     "Superior packing to ensure the safety of your products.",
-                  img: "/path-to-packing-image.jpg",
+                  img: packingService,
                 },
                 {
                   title: "Consulting",
                   description:
                     "Expert guidance for seamless import/export processes.",
-                  img: "/path-to-consulting-image.jpg",
+                  img: consultingService,
                 },
                 {
                   title: "Warehousing",
                   description: "State-of-the-art warehousing solutions.",
-                  img: "/path-to-warehousing-image.jpg",
+                  img: warehousingService,
                 },
                 {
                   title: "Freight Forwarding",
                   description:
                     "Global freight forwarding at competitive rates.",
-                  img: "/path-to-freight-forwarding-image.jpg",
+                  img: frieghtService,
                 },
               ].map((service, index) => (
                 <div
@@ -140,9 +146,9 @@ const Home = () => {
                   data-aos-delay={`${200 * (index + 1)}`}
                 >
                   <img
-                    src={image1}
+                    src={service.img}
                     alt={service.title}
-                    className="w-full h-40 object-cover mb-4 rounded-lg"
+                    className="w-full h-40 mb-4 rounded-lg"
                   />
                   <h3 className="text-xl font-semibold mb-2">
                     {service.title}

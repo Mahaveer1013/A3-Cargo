@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "@headlessui/react": "^2.2.0",
-    "aos": "^2.3.4",
-    "react-vertical-timeline-component": "^3.6.0"
-  }
-}
