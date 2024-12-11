@@ -1,0 +1,202 @@
+[
+    {
+        "category": "De-oiled Rice Bran",
+        "code": "08",
+        "image": "https://staticimg.amarujala.com/assets/images/gaonjunction.com/2024/05/27/bhasa_e9db2f6248b9038cfaf96806f8b7c808.jpeg?w=414&dpr=1.0&q=50",
+        "subcategories": [
+            {
+                "name": "De-oiled Rice Bran",
+                "code": "01",
+                "products": [
+                    {
+                        "name": "Premium De-oiled Rice Bran",
+                        "description": "High-quality de-oiled rice bran suitable for animal feed and industrial uses.",
+                        "amount": 500,
+                        "image": "https://content.safalfasalonline.in/images/catalog/607_05fbc1e6c65ba58c045b11f390674ed609ab80eb056a9beabcbd91f79e1dad82_L.jpg"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "category": "Cereals",
+        "code": "06",
+        "image": " https://milletbank.in/cdn/shop/files/CEREALS_MOBILE.png?v=1721732717&width=1024",
+        "subcategories": [
+            {
+                "name": "Wheat",
+                "code": "03",
+                "products": [
+                    {
+                        "name": "Premium Wheat",
+                        "description": "High-quality wheat sourced from the best farms.",
+                        "amount": 300,
+                        "image": "https://m.media-amazon.com/images/I/71YR8g4Rv0L._AC_UF1000,1000_QL80_.jpg"
+                    }
+                ]
+            },
+            {
+                "name": "Non Basmati Rice",
+                "code": "01",
+                "products": [
+                    {
+                        "name": "Economical Non Basmati Rice",
+                        "description": "Best quality non-basmati rice for everyday meals.",
+                        "amount": 200,
+                        "image": "https://m.media-amazon.com/images/I/51SV6KCqW0S._AC_UF894,1000_QL80_.jpg"
+                    }
+                ]
+            },
+            {
+                "name": "Basmati Rice",
+                "code": "02",
+                "products": [
+                    {
+                        "name": "Premium Basmati Rice",
+                        "description": "Aromatic long-grain basmati rice for special occasions.",
+                        "amount": 400,
+                        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRT-QsTqTGkjqsrMabbrtibkFLxTmtbqQx1JQ&s"
+                    }
+                ]
+            },
+            {
+                "name": "Other Coarse Grains",
+                "code": "04",
+                "products": [
+                    {
+                        "name": "Assorted Coarse Grains",
+                        "description": "A mix of coarse grains rich in fiber and nutrients.",
+                        "amount": 250,
+                        "image": "https://watermark.lovepik.com/photo/20211121/large/lovepik-coarse-grains-picture_500539688.jpg"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "category": "Cashew",
+        "code": "07",
+        "image": "https://i0.wp.com/post.healthline.com/wp-content/uploads/2020/06/cashews-nuts-1296x728-header.jpg?w=1155&h=1528",
+        "subcategories": [
+            {
+                "name": "Cashew Kernels",
+                "code": "01",
+                "products": [
+                    {
+                        "name": "Premium Cashew Kernels",
+                        "description": "Delicious and crunchy cashew kernels, perfect for snacking and cooking.",
+                        "amount": 1000,
+                        "image": "https://www.shutterstock.com/image-photo/tasty-cashew-nuts-background-top-600nw-1268855638.jpg"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "category": "Fruits & Vegetables",
+        "code": "02",
+        "image": "https://img.freepik.com/free-photo/front-view-vegetable_140725-103355.jpg?semt=ais_hybrid",
+        "subcategories": [
+            {
+                "name": "Fresh Onions",
+                "code": "01",
+                "products": [
+                    {
+                        "name": "Red Onions",
+                        "description": "Freshly harvested red onions for all your cooking needs.",
+                        "amount": 100,
+                        "image": "https://cpimg.tistatic.com/09921203/b/4/Fresh-Red-Onion..jpg"
+                    }
+                ]
+            },
+            {
+                "name": "Other Fresh Vegetables",
+                "code": "02",
+                "products": [
+                    {
+                        "name": "Seasonal Vegetables",
+                        "description": "A mix of fresh seasonal vegetables.",
+                        "amount": 150,
+                        "image": "https://goqii.com/blog/wp-content/uploads/SNF1902HZ-682_1312610a.jpg"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "category": "Processed Fruits & Vegetables",
+        "code": "03",
+        "image": "https://media.licdn.com/dms/image/D4D12AQGJr_J64Z1dGA/article-cover_image-shrink_600_2000/0/1656160210579?e=2147483647&v=beta&t=8CbNqvo9Fyz4W-Bj4SPXz6tt1OMxT_tU8H0lsA4964c",
+        "subcategories": [
+            {
+                "name": "Dried & Preserved Vegetables",
+                "code": "01",
+                "products": [
+                    {
+                        "name": "Sun-dried Tomatoes",
+                        "description": "Flavorful sun-dried tomatoes perfect for gourmet dishes.",
+                        "amount": 800,
+                        "image": "https://www.platingsandpairings.com/wp-content/uploads/2020/08/how-to-make-sun-dried-tomatoes-25-scaled.jpg"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "category": "Animal Products",
+        "code": "04",
+        "image": "https://media.istockphoto.com/id/505592886/photo/selection-of-protein-sources-in-kitchen-background.jpg?s=612x612&w=0&k=20&c=nkQzDMJZWXRMVAfYIICuzG-t6fc9rcrr6oqYeYrZf-o=",
+        "subcategories": [
+            {
+                "name": "Poultry Products",
+                "code": "03",
+                "products": [
+                    {
+                        "name": "Fresh Eggs",
+                        "description": "Farm-fresh eggs rich in protein.",
+                        "amount": 50,
+                        "image": "https://www.shutterstock.com/image-photo/basket-colorful-chicken-eggs-on-260nw-2270711821.jpg"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "category": "Floriculture & Seeds",
+        "code": "01",
+        "image": "https://www.shutterstock.com/image-photo/expert-farmer-sowing-seed-on-600nw-2292508739.jpg",
+        "subcategories": [
+            {
+                "name": "Floriculture",
+                "code": "01",
+                "products": [
+                    {
+                        "name": "Ornamental Flowers",
+                        "description": "Beautiful flowers for decoration and gifting.",
+                        "amount": 300,
+                        "image": "https://cdn.shopify.com/s/files/1/0579/7924/0580/files/closeup-blooming-dahlia-flowers-greenery_480x480.jpg?v=1674666646"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "category": "Spices & Condiments",
+        "code": "10",
+        "image": "https://proficiencytesting.in/wp-content/uploads/2023/08/23-e1693221149166.jpg",
+        "subcategories": [
+            {
+                "name": "Turmeric",
+                "code": "01",
+                "products": [
+                    {
+                        "name": "Organic Turmeric Powder",
+                        "description": "Pure and natural turmeric powder with rich aroma and vibrant color.",
+                        "amount": 200,
+                        "image": "https://www.greendna.in/cdn/shop/products/turmeric-1-1030x687_1030x.jpg?v=1562518343"
+                    }
+                ]
+            }
+        ]
+    }
+]
