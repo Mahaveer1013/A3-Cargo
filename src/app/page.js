@@ -1,9 +1,12 @@
 "use client";
 
-import { useEffect } from "react";
+import React, { useEffect, useState, useRef } from "react";
+import { useInView } from "react-intersection-observer";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import ContactBanner from "../components/ContactBanner";
+import CountUp from 'react-countup';
+import Image from "next/image";
 
 const Home = () => {
   useEffect(() => {
@@ -16,6 +19,17 @@ const Home = () => {
       aboutUsSection.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+  // Set up ref and inView to detect when the Stats section is in the viewport
+  const statsRef = useRef(null);
+  const [inView, setInView] = useState(false);
+
+  const { ref, inView: statsInView } = useInView({
+    triggerOnce: true, // Trigger animation only once
+    onChange: (inView) => {
+      setInView(inView);
+    },
+  });
 
   return (
     <>
@@ -82,7 +96,9 @@ const Home = () => {
               </p>
             </div>
             <div data-aos="fade-left">
-              <img
+              <Image
+                width={1000}
+                height={1000}
                 src="/image1.png"
                 alt="About Us"
                 className="w-full rounded-lg shadow-md"
@@ -140,9 +156,11 @@ const Home = () => {
                   data-aos="fade-up"
                   data-aos-delay={`${200 * (index + 1)}`}
                 >
-                  <img
+                  <Image
                     src={service.img}
                     alt={service.title}
+                    width={10000}
+                    height={10000}
                     className="w-full h-40 mb-4 rounded-lg"
                   />
                   <h3 className="text-xl font-semibold mb-2">
@@ -156,25 +174,33 @@ const Home = () => {
         </section>
 
         {/* Stats */}
-        <section className="py-16 bg-white">
-          <h2 className="text-4xl font-bold text-center mb-8 text-blue-400">
+        <section className="py-16 bg-white" ref={ref}>
+          <h2 className="text-4xl font-bold text-center mb-8 text-black">
             Our Achievements
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
             <div className="p-6">
-              <h3 className="text-5xl font-bold text-blue-400 mb-2">500+</h3>
+              <h3 className="text-5xl font-bold text-blue-400 mb-2">
+                {inView ? <CountUp start={0} end={500} duration={2} /> : 0}
+              </h3>
               <p className="text-lg">Happy Clients</p>
             </div>
             <div className="p-6">
-              <h3 className="text-5xl font-bold text-blue-400 mb-2">1200+</h3>
+              <h3 className="text-5xl font-bold text-blue-400 mb-2">
+                {inView ? <CountUp start={0} end={1200} duration={2} /> : 0}
+              </h3>
               <p className="text-lg">Successful Shipments</p>
             </div>
             <div className="p-6">
-              <h3 className="text-5xl font-bold text-blue-400 mb-2">99%</h3>
+              <h3 className="text-5xl font-bold text-blue-400 mb-2">
+                {inView ? <CountUp start={0} end={99} duration={2} /> : 0}%
+              </h3>
               <p className="text-lg">Customer Satisfaction</p>
             </div>
             <div className="p-6">
-              <h3 className="text-5xl font-bold text-blue-400 mb-2">20+</h3>
+              <h3 className="text-5xl font-bold text-blue-400 mb-2">
+                {inView ? <CountUp start={0} end={20} duration={2} /> : 0}+
+              </h3>
               <p className="text-lg">Years of Excellence</p>
             </div>
           </div>

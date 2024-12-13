@@ -1,0 +1,39 @@
+[
+    {
+      "id": 1,
+      "title": "Export Management",
+      "description": "We offer comprehensive export management services, helping you navigate international regulations, ensure compliance, and streamline the entire process from start to finish.",
+      "image": "/services/export.png"
+    },
+    {
+      "id": 2,
+      "title": "Import Management",
+      "description": "Our import management services ensure smooth and hassle-free processes for bringing goods into your country, from customs brokerage to final delivery, with complete regulatory compliance.",
+      "image": "/services/import.png"
+    },
+    {
+      "id": 3,
+      "title": "Logistics and Freight",
+      "description": "With our global logistics network, we ensure that your goods are delivered efficiently and securely to any destination. Our freight services guarantee timely and cost-effective solutions.",
+      "image": "/services/logistics.png"
+    },
+    {
+      "id": 4,
+      "title": "Customs Brokerage",
+      "description": "Our customs brokerage services ensure that your imports and exports comply with all relevant regulations. We manage documentation, duties, and tariffs to keep your business running smoothly.",
+      "image": "/services/customs.png"
+    },
+    {
+      "id": 5,
+      "title": "Consulting Services",
+      "description": "Our experienced consultants provide strategic guidance to help your business navigate global trade complexities, from risk management to identifying new market opportunities.",
+      "image": "/services/consulting.png"
+    },
+    {
+      "id": 6,
+      "title": "Risk Management",
+      "description": "We offer comprehensive risk management services to protect your international business from potential threats. From financial risks to geopolitical uncertainties, we help mitigate challenges.",
+      "image": "/services/risk-management.png"
+    }
+  ]
+  

@@ -68,28 +68,35 @@ const Navbar = () => {
             </button>
             
             <Link
-              to="/"
+              href="/"
               className="text-blue-600 text-lg font-medium hover:underline"
               onClick={() => setIsOpen(false)}
             >
               Home
             </Link>
             <Link
-              to="/about"
+              href="/about"
               className="text-blue-600 text-lg font-medium hover:underline"
               onClick={() => setIsOpen(false)}
             >
               About Us
             </Link>
             <Link
-              to="/services"
+              href="/services"
               className="text-blue-600 text-lg font-medium hover:underline"
               onClick={() => setIsOpen(false)}
             >
               Services
             </Link>
             <Link
-              to="/contact"
+              href="/products"
+              className="text-blue-600 text-lg font-medium hover:underline"
+              onClick={() => setIsOpen(false)}
+            >
+              Products
+            </Link>
+            <Link
+              href="/contact"
               className="text-blue-600 text-lg font-medium hover:underline"
               onClick={() => setIsOpen(false)}
             >

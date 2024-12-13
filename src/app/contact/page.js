@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEnvelope,
   faMapMarkerAlt,
-  faPhoneAlt,
+  faPhone,
 } from "@fortawesome/free-solid-svg-icons";
 
 const ContactUs = () => {
@@ -22,12 +22,59 @@ const ContactUs = () => {
     }
   };
 
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [loading, setLoading] = useState(false);
+  const [responseMessage, setResponseMessage] = useState(null);
+
+  // Handle form input changes
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  // Handle form submission
+  const handleFormSubmit = async (e) => {
+    e.preventDefault(); // Prevent default form submission
+    setLoading(true);
+    setResponseMessage(null);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+      setLoading(false);
+
+      if (response.ok) {
+        setResponseMessage("Your message has been sent successfully!");
+        setFormData({ name: "", email: "", message: "" }); // Reset form fields
+      } else {
+        setResponseMessage(
+          result.message || "An error occurred. Please try again."
+        );
+      }
+    } catch (error) {
+      setLoading(false);
+      setResponseMessage("An error occurred. Please try again.");
+      console.error("Error submitting form:", error);
+    }
+  };
+
   return (
     <div className="font-sans overflow-hidden">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-950 to-blue-500 text-white h-[40vh] flex flex-col justify-center items-center relative overflow-hidden">
+      <section className="bg-gradient-to-r text-black h-[40vh] flex flex-col justify-center items-center relative overflow-hidden">
         <div className="relative z-10 text-center">
-          <h1 className="text-5xl font-bold mb-6 animate__animated animate__fadeInUp">
+          <h1 className="text-4xl sm:text-5xl font-bold mb-6 animate__animated animate__fadeInUp">
             Get in Touch
           </h1>
           <p className="text-lg mb-8 animate__animated animate__fadeInUp animate__delay-1s">
@@ -37,103 +84,116 @@ const ContactUs = () => {
         </div>
       </section>
 
-      {/* Contact Form */}
-      <section className="py-16 px-6 bg-white" id="contact-form">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div data-aos="fade-right">
-              <h2 className="text-4xl font-bold mb-6">Contact Form</h2>
-              <form className="space-y-6">
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-gray-700 font-medium"
-                  >
-                    Your Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    className="w-full p-3 border border-gray-300 rounded-lg mt-2"
-                    placeholder="Enter your name"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-gray-700 font-medium"
-                  >
-                    Your Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    className="w-full p-3 border border-gray-300 rounded-lg mt-2"
-                    placeholder="Enter your email"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-gray-700 font-medium"
-                  >
-                    Your Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    className="w-full p-3 border border-gray-300 rounded-lg mt-2"
-                    rows="6"
-                    placeholder="Write your message here"
-                  ></textarea>
-                </div>
-                <div className="text-center">
-                  <button
-                    type="submit"
-                    className="px-6 py-3 bg-blue-600 text-white font-bold rounded hover:bg-blue-700 transition duration-300"
-                  >
-                    Send Message
-                  </button>
-                </div>
-              </form>
-            </div>
-            <div data-aos="fade-left">
-              <h2 className="text-4xl font-bold mb-6">
-                Our Contact Information
-              </h2>
-              <div className="space-y-6">
-                <div className="flex items-center">
-                  <FontAwesomeIcon
-                    icon={faPhoneAlt}
-                    className="text-blue-600 text-2xl mr-4"
-                  />
-                  <p className="text-lg text-gray-700">
-                    +91 8825430312, +91 9841014472
-                  </p>
-                </div>
-                <div className="flex items-center">
-                  <FontAwesomeIcon
-                    icon={faEnvelope}
-                    className="text-blue-600 text-2xl mr-4"
-                  />
-                  <p className="text-lg text-gray-700">
-                    a3expresscargo@gmail.com
-                  </p>
-                </div>
-                <div className="flex items-center">
-                  <FontAwesomeIcon
-                    icon={faMapMarkerAlt}
-                    className="text-blue-600 text-2xl mr-4"
-                  />
-                  <p className="text-lg text-gray-700">
-                    20 Sundaram 3rd Street FIRST LINE,VYASARPADI Chennai,
-                    600039, CHENNAI, TAMIL NADU
-                  </p>
-                </div>
+      {/* Contact Info Section */}
+      <section className="bg-blue-600 flex flex-col-reverse md:flex-row">
+        <div
+          data-aos="fade-left"
+          className="p-6 md:w-1/2 text-white text-xl space-y-4"
+        >
+          <p className="text-lg flex items-center space-x-2">
+            <FontAwesomeIcon icon={faMapMarkerAlt} className="text-white" />
+            <span>Address</span>
+          </p>
+          <div className="w-full">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.7979584019827!2d80.24891389999999!3d12.984770699999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525d6155089807%3A0xe8eb6a1c37f7d829!2sTicel%20Bio%20Park%20Phase%202!5e0!3m2!1sen!2sin!4v1734001537223!5m2!1sen!2sin"
+              width="100%"
+              height="150"
+              className="border-0"
+              allowFullScreen=""
+              loading="lazy"
+            ></iframe>
+            <p>
+              20 Sundaram 3rd Street, VYASARPADI Chennai, 600039, CHENNAI, TAMIL
+              NADU
+            </p>
+          </div>
+          <p className="text-lg flex items-center space-x-2">
+            <FontAwesomeIcon icon={faPhone} className="text-white" />
+            <span>Phone</span>
+          </p>
+          <p>
+            +91 8825430312
+            <br />
+            +91 9841014472
+          </p>
+          <p className="text-lg flex items-center space-x-2">
+            <FontAwesomeIcon icon={faEnvelope} className="text-white" />
+            <span>Email</span>
+          </p>
+          <p>a3expresscargo@gmail.com</p>
+        </div>
+
+        {/* Contact Form Section */}
+        {/* Contact Form Section */}
+        <div className="md:w-1/2 p-6" id="contact-form">
+          <div data-aos="fade-right">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-center text-white">
+              Contact Form
+            </h2>
+            <form className="space-y-6" onSubmit={handleFormSubmit}>
+              <div>
+                <label htmlFor="name" className="block text-white font-medium">
+                  Your Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  className="w-full p-3 border border-gray-300 rounded-lg mt-2"
+                  placeholder="Enter your name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                />
               </div>
-            </div>
+
+              <div>
+                <label htmlFor="email" className="block text-white font-medium">
+                  Your Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  className="w-full p-3 border border-gray-300 rounded-lg mt-2"
+                  placeholder="Enter your email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="message"
+                  className="block text-white font-medium"
+                >
+                  Your Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  className="w-full p-3 border border-gray-300 rounded-lg mt-2"
+                  rows="6"
+                  placeholder="Write your message here"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                ></textarea>
+              </div>
+
+              {responseMessage && (
+                <p className="text-center text-white mt-4">{responseMessage}</p>
+              )}
+
+              <div className="text-center">
+                <button
+                  type="submit"
+                  className="px-6 py-3 bg-white text-blue-600 font-bold rounded hover:bg-slate-300 transition duration-300"
+                  disabled={loading}
+                >
+                  {loading ? "Sending..." : "Send Message"}
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </section>
@@ -190,49 +250,6 @@ const ContactUs = () => {
                 registration.
               </p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Us */}
-      <section className="py-16 px-6 bg-white">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-12" data-aos="fade-up">
-            Why Reach Out To Us?
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                title: "Customer Support",
-                description:
-                  "Our dedicated team is always ready to assist you.",
-              },
-              {
-                title: "Experienced Staff",
-                description:
-                  "Speak with our experts in the logistics industry.",
-              },
-              {
-                title: "Global Reach",
-                description:
-                  "We serve clients across the world with precision.",
-              },
-              {
-                title: "Fast Response",
-                description:
-                  "We respond to all inquiries quickly and efficiently.",
-              },
-            ].map((reason, index) => (
-              <div
-                key={reason.title}
-                className="bg-white border p-6 rounded shadow-md hover:shadow-lg transition"
-                data-aos="fade-up"
-                data-aos-delay={`${200 * (index + 1)}`}
-              >
-                <h3 className="text-2xl font-semibold mb-2">{reason.title}</h3>
-                <p className="text-gray-600">{reason.description}</p>
-              </div>
-            ))}
           </div>
         </div>
       </section>
