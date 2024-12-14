@@ -99,7 +99,7 @@ const Home = () => {
               <Image
                 width={1000}
                 height={1000}
-                src="/image1.png"
+                src="/image2.webp"
                 alt="About Us"
                 className="w-full rounded-lg shadow-md"
               />

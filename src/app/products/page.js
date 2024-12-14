@@ -28,7 +28,13 @@ const Products = () => {
       const data = await response.json();
 
       if (Array.isArray(data)) {
-        setProductsData((prev) => [...prev, ...data]);
+        setProductsData((prev) => {
+          const existingIds = new Set(prev.map((product) => product._id));
+          const newProducts = data.filter(
+            (product) => !existingIds.has(product._id)
+          );
+          return [...prev, ...newProducts];
+        });
       } else {
         console.log("Fetched data is not an array:", data);
       }
