@@ -54,15 +54,7 @@ const NewProductForm = ({ submitForm, closeModal }) => {
     });
 
     try {
-      const logFormData = (formData) => {
-        for (let pair of formData.entries()) {
-          console.log(pair[0], pair[1]);
-        }
-      };
-      logFormData(formDataToSend);
-
       await submitForm(formDataToSend);
-      alert("Product submitted successfully!");
     } catch (error) {
       console.error("Error submitting product:", error);
       setError("Failed to submit the product. Please try again.");

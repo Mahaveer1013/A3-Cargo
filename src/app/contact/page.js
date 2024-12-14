@@ -25,8 +25,10 @@ const ContactUs = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     message: "",
   });
+  
   const [loading, setLoading] = useState(false);
   const [responseMessage, setResponseMessage] = useState(null);
 
@@ -134,7 +136,7 @@ const ContactUs = () => {
             <form className="space-y-6" onSubmit={handleFormSubmit}>
               <div>
                 <label htmlFor="name" className="block text-white font-medium">
-                  Your Name
+                  Your Name *
                 </label>
                 <input
                   type="text"
@@ -148,8 +150,23 @@ const ContactUs = () => {
               </div>
 
               <div>
+                <label htmlFor="name" className="block text-white font-medium">
+                  Your Phone
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  className="w-full p-3 border border-gray-300 rounded-lg mt-2"
+                  placeholder="Enter your phone number"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                />
+              </div>
+
+              <div>
                 <label htmlFor="email" className="block text-white font-medium">
-                  Your Email
+                  Your Email *
                 </label>
                 <input
                   type="email"
@@ -167,13 +184,13 @@ const ContactUs = () => {
                   htmlFor="message"
                   className="block text-white font-medium"
                 >
-                  Your Message
+                  Your Message *
                 </label>
                 <textarea
                   id="message"
                   name="message"
                   className="w-full p-3 border border-gray-300 rounded-lg mt-2"
-                  rows="6"
+                  rows="3"
                   placeholder="Write your message here"
                   value={formData.message}
                   onChange={handleInputChange}

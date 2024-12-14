@@ -78,31 +78,11 @@ export async function GET(req) {
     // Connect to the database
     await connectToDatabase();
 
-    // Extract pagination parameters (page, limit) from the query string
-    const url = new URL(req.url);
-    const page = parseInt(url.searchParams.get('page')) || 1; // Default to page 1 if not provided
-    const limit = parseInt(url.searchParams.get('limit')) || 10; // Default to 10 items per page if not provided
-    const skip = (page - 1) * limit; // Calculate skip value for pagination
-
     // Fetch contact messages with pagination
     const contactMessages = await Contact.find()
       .sort({ createdAt: -1 }) // Sorting by creation date (descending)
-      .skip(skip) // Skip the previous pages' messages
-      .limit(limit); // Limit the number of results per page
 
-    // Fetch the total count for pagination metadata
-    const totalMessages = await Contact.countDocuments();
-
-    // Return the contact messages along with pagination metadata
-    return new Response(JSON.stringify({
-      contactMessages,
-      pagination: {
-        page,
-        limit,
-        totalMessages,
-        totalPages: Math.ceil(totalMessages / limit),
-      }
-    }), {
+    return new Response(JSON.stringify(contactMessages), {
       status: 200,
       headers: { "Content-Type": "application/json" },
     });

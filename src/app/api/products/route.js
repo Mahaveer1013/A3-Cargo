@@ -6,31 +6,11 @@ export const GET = async (req) => {
   // Ensure database connection is established
   await dbConnect();
 
-  // Extract query parameters
-  const { searchParams } = new URL(req.url);
-  const page = parseInt(searchParams.get("page")) || 1; // Default to page 1
-  const limit = parseInt(searchParams.get("limit")) || 20; // Default to 10 items per page
-
   try {
-    // Calculate the number of documents to skip
-    const skip = (page - 1) * limit;
-
     // Fetch products with pagination
-    const products = await Product.find().skip(skip).limit(limit);
+    const products = await Product.find();
 
-    // Fetch the total count of products
-    const total = await Product.countDocuments();
-
-    // Construct the response
-    const response = {
-      products,
-      page,
-      limit,
-      total,
-      totalPages: Math.ceil(total / limit),
-    };
-
-    return new Response(JSON.stringify(response), { status: 200 });
+    return new Response(JSON.stringify(products), { status: 200 });
   } catch (error) {
     return new Response(
       JSON.stringify({
@@ -63,6 +43,8 @@ export const POST = async (req) => {
 
     // Parse the form data using FormData
     const formData = await req.formData();
+    console.log(formData);
+    
     const thumbnailFile = formData.get("thumbnail");
 
     // Function to extract image data (you need to define this)
@@ -76,8 +58,10 @@ export const POST = async (req) => {
     ];
 
     for (let imageFile of displayImagesFiles) {
-      const imageData = await getImageData(imageFile);
-      displayImages.push(imageData);
+      if (imageFile) {
+        const imageData = await getImageData(imageFile);
+        displayImages.push(imageData);
+      }
     }
 
     // Extract other fields
