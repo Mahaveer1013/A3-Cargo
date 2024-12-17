@@ -8,6 +8,7 @@ import ContactBanner from "../components/ContactBanner";
 import CountUp from "react-countup";
 import Image from "next/image";
 import Link from 'next/link';
+import Footer from "./Footer";
 
 const Home = () => {
   useEffect(() => {
@@ -245,7 +246,7 @@ const Home = () => {
             </div>
           </div>
         </section>
-
+        <Footer />
       </div>
     </>
   );
