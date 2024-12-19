@@ -1,12 +1,11 @@
 "use client";
-
 import React, { useEffect, useState, useRef } from "react";
 import { useInView } from "react-intersection-observer";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import ContactBanner from "../components/ContactBanner";
-import CountUp from 'react-countup';
+import CountUp from "react-countup";
 import Image from "next/image";
+import Footer from "./Footer";
 
 const Home = () => {
   useEffect(() => {
@@ -21,14 +20,8 @@ const Home = () => {
   };
 
   // Set up ref and inView to detect when the Stats section is in the viewport
-  const statsRef = useRef(null);
-  const [inView, setInView] = useState(false);
-
-  const { ref, inView: statsInView } = useInView({
-    triggerOnce: true, // Trigger animation only once
-    onChange: (inView) => {
-      setInView(inView);
-    },
+  const { ref, inView } = useInView({
+    triggerOnce: true,
   });
 
   return (
@@ -36,32 +29,6 @@ const Home = () => {
       <div className="font-sans overflow-hidden">
         {/* Hero Banner */}
         <section className="bg-gradient-to-r from-blue-950 to-blue-500 text-white h-[calc(100vh-64px)] flex flex-col justify-center items-center relative overflow-hidden">
-          {/* Scrolling background images */}
-          {/* <div className="absolute inset-0 overflow-hidden z-0">
-          <div className="infinite-scroll flex absolute inset-0 animate-scroll">
-            <img
-              src="https://via.placeholder.com/600x400"
-              alt="Image 1"
-              className="w-full h-auto object-cover"
-            />
-            <img
-              src="https://via.placeholder.com/600x400"
-              alt="Image 2"
-              className="w-full h-auto object-cover"
-            />
-            <img
-              src="https://via.placeholder.com/600x400"
-              alt="Image 3"
-              className="w-full h-auto object-cover"
-            />
-            <img
-              src="https://via.placeholder.com/600x400"
-              alt="Image 4"
-              className="w-full h-auto object-cover"
-            />
-          </div>
-        </div> */}
-
           <div className="relative z-10 text-center">
             <h1 className="text-5xl font-bold mb-6 animate__animated animate__fadeInUp">
               Global Reach, Local Expertise
@@ -99,7 +66,7 @@ const Home = () => {
               <Image
                 width={1000}
                 height={1000}
-                src="/image2.webp"
+                src="/about.avif"
                 alt="About Us"
                 className="w-full rounded-lg shadow-md"
               />
@@ -181,74 +148,164 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
             <div className="p-6">
               <h3 className="text-5xl font-bold text-blue-400 mb-2">
-                {inView ? <CountUp start={0} end={500} duration={2} /> : 0}
+                {inView ? <CountUp start={0} end={500} duration={5} /> : 0}
               </h3>
               <p className="text-lg">Happy Clients</p>
             </div>
             <div className="p-6">
               <h3 className="text-5xl font-bold text-blue-400 mb-2">
-                {inView ? <CountUp start={0} end={1200} duration={2} /> : 0}
+                {inView ? <CountUp start={0} end={1200} duration={5} /> : 0}
               </h3>
               <p className="text-lg">Successful Shipments</p>
             </div>
             <div className="p-6">
               <h3 className="text-5xl font-bold text-blue-400 mb-2">
-                {inView ? <CountUp start={0} end={99} duration={2} /> : 0}%
+                {inView ? <CountUp start={0} end={99} duration={5} /> : 0}%
               </h3>
               <p className="text-lg">Customer Satisfaction</p>
             </div>
             <div className="p-6">
               <h3 className="text-5xl font-bold text-blue-400 mb-2">
-                {inView ? <CountUp start={0} end={20} duration={2} /> : 0}+
+                {inView ? <CountUp start={0} end={20} duration={5} /> : 0}+
               </h3>
               <p className="text-lg">Years of Excellence</p>
             </div>
           </div>
         </section>
-
-        {/* Why Choose Us */}
-        <section className="py-16 px-6 bg-gray-100">
-          <div className="max-w-6xl mx-auto text-center">
-            <h2 className="text-4xl font-bold mb-12" data-aos="fade-up">
-              Why Choose Us?
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {[
-                {
-                  title: "Global Expertise",
-                  description: "Decades of experience in global trade.",
-                },
-                {
-                  title: "Affordable Pricing",
-                  description:
-                    "Competitive rates without compromising quality.",
-                },
-                {
-                  title: "Reliable Services",
-                  description: "On-time delivery with exceptional reliability.",
-                },
-                {
-                  title: "Sustainability",
-                  description: "Eco-friendly practices for a greener planet.",
-                },
-              ].map((reason, index) => (
-                <div
-                  key={reason.title}
-                  className="bg-white border p-6 rounded shadow-md hover:shadow-lg transition"
-                  data-aos="fade-up"
-                  data-aos-delay={`${200 * (index + 1)}`}
-                >
-                  <h3 className="text-2xl font-semibold mb-2">
-                    {reason.title}
-                  </h3>
-                  <p className="text-gray-600">{reason.description}</p>
+        <section className="py-16 bg-white" ref={ref}>
+        <h2 className="text-4xl font-bold text-center mb-8 text-black">
+          The Smart Choice for Your Needs
+          </h2>
+        <div className="container">
+          <div className="services">
+            
+            {[
+              {
+                icon: "📦",
+                title: "Worldwide Expertise",
+                description: "Worldwide Expertise in Seamless Shipping Solutions",
+                image: "experts.png",
+              },
+              {
+                icon: "⏱",
+                title: "Quick",
+                description: "Fastest local deliveries to multiple destinations",
+                image: "quick.PNG",
+              },
+              {
+                icon: "🚚",
+                title: "Affordable",
+                description: "Competitive rates without compromising quality",
+                image: "services/affor.png",
+              },
+              {
+                icon: "🌍",
+                title: "Sustainability",
+                description: "Eco-friendly practices for a greener planet.",
+                image: "ecofriendly.png",
+              },
+            ].map((service, index) => (
+              <div key={index} className="service-card scroll-animate">
+                <div className="icon">
+                  <span>
+                    {service.icon} {service.title}
+                  </span>
                 </div>
-              ))}
-            </div>
+                <h2>{service.title}</h2>
+                <p>{service.description}</p>
+                <a href="#">Explore &rarr;</a>
+              </div>
+            ))}
           </div>
+
+          <div className="footer scroll-animate">
+            &copy; 2024 Smart Shipping Services. All rights reserved.
+          </div>
+
+          <style jsx>{`
+        .container {
+          text-align: center;
+        }
+
+        .services {
+          display: flex;
+          justify-content: space-around;
+          flex-wrap: wrap;
+          gap: 1rem;
+        }
+
+        .service-card {
+          background: white;
+          border-radius: 10px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          width: 250px;
+          padding: 1rem;
+          text-align: left;
+          overflow: hidden;
+          transform: translateY(50px);
+          opacity: 0;
+          animation: fadeInUp 1.5s ease forwards;
+        }
+
+        .service-card:nth-child(1) {
+          animation-delay: 0.2s;
+        }
+        .service-card:nth-child(2) {
+          animation-delay: 0.4s;
+        }
+        .service-card:nth-child(3) {
+          animation-delay: 0.6s;
+        }
+        .service-card:nth-child(4) {
+          animation-delay: 0.8s;
+        }
+
+        .service-card h2 {
+          font-size: 1.2rem;
+          margin: 0.5rem 0;
+        }
+
+        .service-card p {
+          font-size: 0.9rem;
+          color: #666;
+          line-height: 1.6;
+        }
+
+        .service-card a {
+          color: #5a67d8;
+          text-decoration: none;
+          font-weight: bold;
+          display: inline-block;
+          margin-top: 0.5rem;
+          transition: color 0.3s ease;
+        }
+
+        .service-card a:hover {
+          color: #3b4ccc;
+        }
+
+        .scroll-animate {
+          opacity: 0;
+          transform: translateY(20px);
+          transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        @keyframes fadeInUp {
+          to {
+            transform: translateY(0);
+            opacity: 1;
+          }
+        }
+
+        .footer {
+          margin-top: 2rem;
+          color: #666;
+        }
+      `}</style>
+        </div>
         </section>
+        <Footer />
       </div>
-      <ContactBanner />
     </>
   );
 };

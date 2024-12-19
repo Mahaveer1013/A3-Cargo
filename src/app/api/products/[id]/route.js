@@ -1,16 +1,15 @@
-import { verifyToken } from "@/lib/auth";
+import { verifyToken } from "@/lib/auth"; 
 import dbConnect from "@/lib/dbConnect";
 import Product from "@/model/products.model";
 
+// GET method: Fetch single product by ID or list all products
 export const GET = async (req, { params }) => {
-  // Ensure database connection is established
   await verifyToken(req);
   await dbConnect();
 
   const { id } = await params;
 
   try {
-    // If an `id` is provided in query params, return a single product
     if (id) {
       const product = await Product.findOne({ _id: id });
 
@@ -23,9 +22,7 @@ export const GET = async (req, { params }) => {
       return new Response(JSON.stringify(product), { status: 200 });
     }
 
-    // If no `id`, return a list of all products
     const products = await Product.find();
-
     return new Response(JSON.stringify(products), { status: 200 });
   } catch (error) {
     return new Response(
@@ -38,17 +35,25 @@ export const GET = async (req, { params }) => {
   }
 };
 
+// PUT method: Update product details
 export const PUT = async (req, { params }) => {
-  // Ensure database connection is established
   await verifyToken(req);
   await dbConnect();
 
   const { id } = await params;
+  const {
+    name,
+    category,
+    rating,
+    feedbacks,
+    thumbnail,
+    images,
+    amount,
+    description,
+    brand,
+    stock,
+  } = await req.json();
 
-  const { name, category, thumbnail, images, amount, description, stock } =
-    await req.json();
-
-  // Validate input
   if (!id) {
     return new Response(JSON.stringify({ message: "Product ID is required" }), {
       status: 400,
@@ -56,22 +61,10 @@ export const PUT = async (req, { params }) => {
   }
 
   try {
-    // Find the product by ID and update it
     const updatedProduct = await Product.findOneAndUpdate(
       { _id: id },
-      {
-        name,
-        category,
-        rating,
-        feedbacks,
-        thumbnail,
-        images,
-        amount,
-        description,
-        brand,
-        stock,
-      },
-      { new: true } // Return the updated product
+      { name, category, rating, feedbacks, thumbnail, images, amount, description, brand, stock },
+      { new: true } // Return updated product
     );
 
     if (!updatedProduct) {
@@ -98,8 +91,8 @@ export const PUT = async (req, { params }) => {
   }
 };
 
+// DELETE method: Delete product by ID
 export const DELETE = async (req, { params }) => {
-  // Ensure database connection is established
   await verifyToken(req);
   await dbConnect();
 
@@ -112,7 +105,6 @@ export const DELETE = async (req, { params }) => {
   }
 
   try {
-    // Delete the product by ID
     const deletedProduct = await Product.findOneAndDelete({ _id: id });
 
     if (!deletedProduct) {
