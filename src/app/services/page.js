@@ -1,60 +1,97 @@
 "use client";
+import React, { useEffect } from 'react';
+import 'aos/dist/aos.css';
+import AOS from 'aos';
 
-import { useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import ContactBanner from "../../components/ContactBanner";
-import Image from "next/image";
-import servicesData from "@/lib/services.json";
-
-const Services = () => {
+const ShippingServices = () => {
   useEffect(() => {
-    AOS.init({ duration: 1000 }); // Initialize AOS with a duration of 1000ms
+    AOS.init({
+      duration: 1000,
+      once: true,
+    });
   }, []);
 
-  return (
-    <>
-      <section className="py-16 text-center bg-gradient-to-r from-blue-800 to-blue-600">
-        <h1 className="text-5xl font-bold text-white">Our Expert Services</h1>
-        <p className="mt-4 text-lg text-gray-200 max-w-3xl mx-auto">
-          We offer a wide range of services tailored to streamline global trade,
-          providing solutions that meet the needs of businesses of all sizes.
-          Explore our expertise.
-        </p>
-      </section>
+  const services = [
+    {
+      title: "Logistics",
+      description: "Simplify A3 Express Cargo offers efficient and reliable logistics management services.",
+      imageSrc: "services/Logistics.jpg",
+      backgroundColor: "#edf6fc",
+    },
+    {
+      title: "International Shipping",
+      description: "Ship across the border to 220+ countries and territories with end-to-end support",
+      imageSrc: "services/download1.png",
+      backgroundColor: "#f3f2ff",
+    },
+    {
+      title: "Warehousing",
+      description: "We offers state-of-the-art warehousing solutions designed to meet the needs of modern businesses.",
+      imageSrc: "services/warehouse.jpg",
+      backgroundColor: "#fcf3ed",
+    },
+    {
+      title: "Freight Forwarding",
+      description: "A3 Express Cargo offers global freight forwarding services at competitive rates.",
+      imageSrc: "services/Freight Forwarding.png",
+      backgroundColor: "#eafcf6",
+    },
+    {
+      title: "Consulting",
+      description: "Consulting services ensure that businesses navigate the complexities of international trade with ease.",
+      imageSrc: "services/consulting.jpg",
+      backgroundColor: "#f8e8f7",
+    },
+    {
+      title: "Packing",
+      description: "A3 Express Cargo offers superior packing services to ensure the safety of your products.",
+      imageSrc: "services/Packing.png",
+      backgroundColor: "#fff7d4",
+    }
+  ];
 
-      <section className="py-16 px-6 lg:px-24 bg-white">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 max-w-7xl mx-auto">
-          {servicesData.map((service) => (
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <div className="max-w-6xl mx-auto px-4 py-16">
+        {services.map((service, index) => (
+          <div
+            key={service.title}
+            className="mb-24 last:mb-0"
+            data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}
+          >
             <div
-              key={service.id}
-              data-aos="fade-up"
-              className="bg-white rounded-lg shadow-xl transform hover:scale-105 transition duration-300 ease-in-out group"
+              className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-8 p-8 rounded-2xl transition-transform duration-300 hover:scale-[1.02]`}
+              style={{ backgroundColor: service.backgroundColor }}
             >
-              <Image
-                width={1000}
-                height={1000}
-                src={service.image}
-                alt={service.title}
-                className="w-full h-48 object-cover group-hover:opacity-80 transition duration-300 ease-in-out rounded-t-lg"
-              />
-              <div className="p-6">
-                <h2 className="text-2xl font-semibold text-blue-500">{service.title}</h2>
-                <p className="text-gray-600 mt-2">{service.description}</p>
-                <a
-                  href="#"
-                  className="mt-4 inline-block text-blue-500 hover:text-blue-600 font-semibold transition duration-200 ease-in-out"
-                >
+              <div className="w-full lg:w-1/2 space-y-4">
+                <h2 className="text-4xl font-bold text-gray-800">{service.title}</h2>
+                <p className="text-lg text-gray-600 leading-relaxed">{service.description}</p>
+                <button className="inline-flex items-center gap-2 text-indigo-600 font-semibold hover:text-indigo-700 transition-colors">
                   Learn More
-                </a>
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </button>
+              </div>
+              <div className="w-full lg:w-1/2">
+                <img
+                  src={service.imageSrc}
+                  alt={service.title}
+                  className="w-full h-64 object-cover rounded-xl shadow-lg"
+                />
               </div>
             </div>
-          ))}
+          </div>
+        ))}
+      </div>
+
+      <footer className="bg-white py-8 mt-16">
+        <div className="max-w-6xl mx-auto px-4 text-center">
+          <p className="text-gray-600">&copy; 2024 Smart Shipping Services. All rights reserved.</p>
         </div>
-      </section>
-      <ContactBanner />
-    </>
+      </footer>
+    </div>
   );
 };
 
-export default Services;
+export default ShippingServices;
