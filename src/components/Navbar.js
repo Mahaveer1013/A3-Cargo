@@ -13,7 +13,7 @@ const Navbar = () => {
     <div className="fixed w-full bg-gradient-to-r bg-slate-900 shadow-lg z-50">
       <div className="container mx-auto px-4 md:px-8 py-4 flex justify-between items-center">
         {/* Logo */}
-        <div className="text-white text-2xl font-bold">
+        <div className="text-white text-2xl font-bold" style={{display:"inline"}}>
           A3 Cargo
         </div>
 
