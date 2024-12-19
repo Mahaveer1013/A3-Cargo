@@ -1,25 +1,59 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   FaComments, 
   FaPaperPlane, 
   FaTimes, 
   FaWhatsapp,
-  FaComment 
+  FaComment,
+  FaRobot,
+  FaUser,
+  FaRegSmile,
+  FaPaperclip,
+  FaMinus,
+  FaArrowLeft
 } from 'react-icons/fa';
-import Image from "next/image";
 
 const ShiprocketChatbot = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const [messages, setMessages] = useState([
-    { text: "Hello! Welcome to Shiprocket Support. How can I assist you today?", sender: "bot" }
+    { 
+      text: "👋 Hello! Welcome to Shiprocket Support. How can I assist you today?", 
+      sender: "bot" 
+    }
   ]);
   const [inputMessage, setInputMessage] = useState("");
+  const [isTyping, setIsTyping] = useState(false);
+  const messagesEndRef = useRef(null);
+
+  // Check if device is mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
 
   const handleChatToggle = () => {
     setIsChatOpen(!isChatOpen);
+    setIsDropdownOpen(false);
+  };
+
+  const handleClose = () => {
+    setIsChatOpen(false);
     setIsDropdownOpen(false);
   };
 
@@ -31,159 +65,193 @@ const ShiprocketChatbot = () => {
     setIsDropdownOpen(false);
   };
 
-  const handleResponseClick = (response) => {
-    let botResponse = "";
-    switch (response) {
-      case "I want to subscribe to Shiprocket":
-        botResponse = "You can visit our subscription page to subscribe. Would you like me to provide more details about our subscription plans?";
-        break;
-      case "I'm a current customer of Shiprocket":
-        botResponse = "Great! As a current customer, we're here to help. Do you need assistance with shipping, tracking, or something else?";
-        break;
-      case "I want to track my order":
-        botResponse = "Sure, I can help you track your order. Please provide your order ID or tracking number.";
-        break;
-      case "I'm just browsing":
-        botResponse = "Feel free to explore our services. Is there anything specific you'd like to know about Shiprocket?";
-        break;
-      default:
-        botResponse = "I didn't quite catch that. Could you please clarify?";
+  const quickResponses = [
+    {
+      text: "Subscribe to Shiprocket",
+      response: "You can visit our subscription page to subscribe. Would you like me to provide more details about our subscription plans? 🚀"
+    },
+    {
+      text: "Current Customer",
+      response: "Great! As a current customer, we're here to help. Do you need assistance with shipping, tracking, or something else? 📦"
+    },
+    {
+      text: "Track Order",
+      response: "Sure, I can help you track your order. Please provide your order ID or tracking number. 🔍"
+    },
+    {
+      text: "Just Browsing",
+      response: "Feel free to explore our services. Is there anything specific you'd like to know about Shiprocket? 👀"
     }
+  ];
 
-    setMessages(prevMessages => [
-      ...prevMessages,
-      { text: response, sender: "user" },
-      { text: botResponse, sender: "bot" }
-    ]);
+  const handleResponseClick = (response) => {
+    setMessages(prev => [...prev, { text: response.text, sender: "user" }]);
+    setIsTyping(true);
+
+    setTimeout(() => {
+      setIsTyping(false);
+      setMessages(prev => [...prev, { text: response.response, sender: "bot" }]);
+    }, 1500);
   };
 
   const handleSendMessage = () => {
     if (inputMessage.trim() === "") return;
 
-    setMessages(prevMessages => [
-      ...prevMessages,
-      { text: inputMessage, sender: "user" }
-    ]);
-
-    const botResponse = "Thank you for your message. Our support team will get back to you soon.";
-    
-    setTimeout(() => {
-      setMessages(prevMessages => [
-        ...prevMessages,
-        { text: botResponse, sender: "bot" }
-      ]);
-    }, 1000);
-
+    setMessages(prev => [...prev, { text: inputMessage, sender: "user" }]);
     setInputMessage("");
-  };
+    setIsTyping(true);
 
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
+    setTimeout(() => {
+      setIsTyping(false);
+      setMessages(prev => [...prev, {
+        text: "Thank you for your message. Our support team will get back to you soon. ✨",
+        sender: "bot"
+      }]);
+    }, 1500);
   };
 
   return (
-    <div>
+    <div className="font-sans">
       {isChatOpen && (
-        <div className="fixed bottom-24 right-8 w-96 bg-white shadow-2xl rounded-xl border border-gray-200 flex flex-col">
+        <div 
+          className={`fixed bg-white shadow-2xl flex flex-col transition-all duration-300 z-50
+            ${isMobile 
+              ? 'inset-0' 
+              : 'bottom-24 right-8 w-96 max-w-[calc(100vw-2rem)] rounded-xl border border-gray-200'}`}
+        >
           {/* Chat Header */}
-          <div className="bg-blue-600 text-white p-4 rounded-t-xl flex justify-between items-center">
-            <div className="flex items-center">
-              <h2 className="font-bold">Shiprocket Support</h2>
+          <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-4 flex justify-between items-center relative">
+            <div className="flex items-center space-x-3">
+              {isMobile && (
+                <button 
+                  onClick={handleClose}
+                  className="p-2 hover:bg-blue-500 rounded-full transition-colors"
+                >
+                  <FaArrowLeft size={20} />
+                </button>
+              )}
+              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-md">
+                <FaRobot className="text-blue-600 text-xl" />
+              </div>
+              <div>
+                <h2 className="font-bold text-lg">Shiprocket Support</h2>
+                <div className="flex items-center space-x-2">
+                  <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                  <p className="text-xs text-blue-100">Online | Ready to help</p>
+                </div>
+              </div>
             </div>
-            <button onClick={handleChatToggle} className="hover:bg-blue-700 p-2 rounded-full">
-              <FaTimes />
-            </button>
+            {!isMobile && (
+              <button 
+                onClick={handleClose}
+                className="hover:bg-blue-500 p-2 rounded-full transition-colors"
+              >
+                <FaTimes size={20} />
+              </button>
+            )}
           </div>
 
           {/* Message Area */}
-          <div className="flex-grow overflow-y-auto p-4 space-y-3 max-h-96">
+          <div className="flex-grow overflow-y-auto p-4 space-y-4 bg-gray-50 custom-scrollbar">
             {messages.map((msg, index) => (
               <div 
                 key={index} 
-                className={`flex ${msg.sender === 'bot' ? 'justify-start' : 'justify-end'}`}
+                className={`flex items-end space-x-2 ${msg.sender === 'bot' ? 'justify-start' : 'justify-end'}`}
               >
+                {msg.sender === 'bot' && (
+                  <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center shadow-sm">
+                    <FaRobot className="text-blue-600 text-sm" />
+                  </div>
+                )}
                 <div 
                   className={`
-                    px-4 py-2 rounded-xl max-w-[80%]
+                    px-4 py-3 rounded-2xl max-w-[70%] shadow-sm
                     ${msg.sender === 'bot' 
-                      ? 'bg-gray-200 text-black' 
-                      : 'bg-blue-500 text-white'}
+                      ? 'bg-white text-gray-800 rounded-bl-none' 
+                      : 'bg-blue-600 text-white rounded-br-none'}
                   `}
                 >
                   {msg.text}
                 </div>
+                {msg.sender === 'user' && (
+                  <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center shadow-sm">
+                    <FaUser className="text-white text-sm" />
+                  </div>
+                )}
               </div>
             ))}
+            {isTyping && (
+              <div className="flex items-center space-x-2">
+                <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                  <FaRobot className="text-blue-600 text-sm" />
+                </div>
+                <div className="bg-white p-4 rounded-2xl rounded-bl-none shadow-sm">
+                  <div className="flex space-x-1">
+                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce delay-100"></div>
+                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce delay-200"></div>
+                  </div>
+                </div>
+              </div>
+            )}
+            <div ref={messagesEndRef} />
           </div>
 
           {/* Quick Response Options */}
-          <div className="flex flex-wrap justify-evenly p-2 space-x-2 space-y-2">
-            {[
-              "I want to subscribe to Shiprocket",
-              "I'm a current customer of Shiprocket",
-              "I want to track my order",
-              "I'm just browsing"
-            ].map((response, index) => (
+          <div className="grid grid-cols-2 gap-2 p-3 bg-gray-50 border-t border-gray-100">
+            {quickResponses.map((response, index) => (
               <button
                 key={index}
                 onClick={() => handleResponseClick(response)}
-                className="px-3 py-1 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition text-sm"
+                className="px-3 py-2 bg-white text-blue-600 rounded-xl hover:bg-blue-50 transition text-sm font-medium shadow-sm border border-gray-100 hover:border-blue-200"
               >
-                {response}
+                {response.text}
               </button>
             ))}
           </div>
 
           {/* Message Input */}
-          <div className="flex p-4 border-t">
-            <input 
-              type="text"
-              value={inputMessage}
-              onChange={(e) => setInputMessage(e.target.value)}
-              placeholder="Type your message..."
-              className="flex-grow p-2 border rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
-            />
-            <button 
-              onClick={handleSendMessage}
-              className="bg-blue-500 text-white p-2 rounded-r-lg hover:bg-blue-600 transition"
-            >
-              <FaPaperPlane />
-            </button>
+          <div className="p-4 bg-white border-t">
+            <div className="flex space-x-2">
+              <div className="flex-grow flex items-center space-x-2 p-2 border rounded-xl focus-within:ring-2 focus-within:ring-blue-500 bg-gray-50">
+                <input 
+                  type="text"
+                  value={inputMessage}
+                  onChange={(e) => setInputMessage(e.target.value)}
+                  placeholder="Type your message..."
+                  className="flex-grow p-2 bg-transparent focus:outline-none"
+                  onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
+                />
+                <button className="text-gray-400 hover:text-gray-600 p-2">
+                  <FaRegSmile />
+                </button>
+                <button className="text-gray-400 hover:text-gray-600 p-2">
+                  <FaPaperclip />
+                </button>
+              </div>
+              <button 
+                onClick={handleSendMessage}
+                className="bg-blue-600 text-white p-4 rounded-xl hover:bg-blue-700 transition-colors flex items-center justify-center min-w-[48px] shadow-md hover:shadow-lg"
+              >
+                <FaPaperPlane />
+              </button>
+            </div>
           </div>
         </div>
       )}
 
-      {/* Combined Floating Button with Dropdown */}
-      <div className="fixed bottom-8 right-8 z-50">
-        <div className="relative">
-          {/* Main Floating Button */}
-          <button 
-            onClick={toggleDropdown}
-            className="bg-blue-500 p-4 rounded-full text-white shadow-lg hover:bg-blue-600 transition relative z-50"
-          >
-            <FaComments size={30} />
-          </button>
-
-          {/* Dropdown Menu */}
-          {isDropdownOpen && (
-            <div className="absolute bottom-full right-0 mb-2 w-48 bg-white shadow-lg rounded-lg border border-gray-200">
-              <button 
-                onClick={handleChatToggle}
-                className="w-full flex items-center p-3 hover:bg-gray-100 transition"
-              >
-                <FaComment className="mr-2" /> Chat Support
-              </button>
-              <button 
-                onClick={openWhatsApp}
-                className="w-full flex items-center p-3 hover:bg-gray-100 transition"
-              >
-                <FaWhatsapp className="mr-2 text-green-500" /> WhatsApp
-              </button>
-            </div>
-          )}
-        </div>
-      </div>
+      {/* Floating Button */}
+      <button 
+        onClick={handleChatToggle}
+        className={`fixed z-50 bg-gradient-to-r from-blue-600 to-blue-700 p-4 rounded-full text-white shadow-lg hover:shadow-xl transition-all duration-300 group
+          ${isMobile ? 'bottom-6 right-6' : 'bottom-8 right-8'}`}
+      >
+        {isChatOpen ? (
+          <FaTimes size={24} className="group-hover:scale-110 transition-transform" />
+        ) : (
+          <FaComments size={24} className="group-hover:scale-110 transition-transform" />
+        )}
+      </button>
     </div>
   );
 };
