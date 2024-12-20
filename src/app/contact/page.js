@@ -9,6 +9,7 @@ import {
   faMapMarkerAlt,
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 const ContactUs = () => {
   useEffect(() => {
@@ -28,19 +29,17 @@ const ContactUs = () => {
     phone: "",
     message: "",
   });
-  
+
   const [loading, setLoading] = useState(false);
   const [responseMessage, setResponseMessage] = useState(null);
 
-  // Handle form input changes
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  // Handle form submission
   const handleFormSubmit = async (e) => {
-    e.preventDefault(); // Prevent default form submission
+    e.preventDefault();
     setLoading(true);
     setResponseMessage(null);
 
@@ -58,7 +57,7 @@ const ContactUs = () => {
 
       if (response.ok) {
         setResponseMessage("Your message has been sent successfully!");
-        setFormData({ name: "", email: "", message: "" }); // Reset form fields
+        setFormData({ name: "", email: "", phone: "", message: "" });
       } else {
         setResponseMessage(
           result.message || "An error occurred. Please try again."
@@ -74,75 +73,74 @@ const ContactUs = () => {
   return (
     <div className="font-sans overflow-hidden">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r text-black h-[40vh] flex flex-col justify-center items-center relative overflow-hidden">
+      <section className="bg-gradient-to-r from-blue-500 to-purple-600 text-white h-[40vh] flex flex-col justify-center items-center relative">
         <div className="relative z-10 text-center">
           <h1 className="text-4xl sm:text-5xl font-bold mb-6 animate__animated animate__fadeInUp">
             Get in Touch
           </h1>
           <p className="text-lg mb-8 animate__animated animate__fadeInUp animate__delay-1s">
-            We’d love to hear from you. Reach out to us with any questions or
-            inquiries.
+            We’d love to hear from you. Reach out to us with any questions or inquiries.
           </p>
+        </div>
+        <div className="absolute inset-0 opacity-50">
+          <DotLottieReact
+            src="https://lottie.host/d325736e-d46f-43b1-9258-d6e85ec8d252/53HjYp2YYz.lottie"
+            loop
+            autoplay
+          />
         </div>
       </section>
 
       {/* Contact Info Section */}
-      <section className="bg-blue-600 flex flex-col-reverse md:flex-row">
+      <section className="bg-blue-600 flex flex-col md:flex-row">
         <div
           data-aos="fade-left"
-          className="p-6 md:w-1/2 text-white text-xl space-y-4"
+          className="p-8 md:w-1/2 text-white space-y-6 flex flex-col justify-center items-start"
         >
-          <p className="text-lg flex items-center space-x-2">
-            <FontAwesomeIcon icon={faMapMarkerAlt} className="text-white" />
-            <span>Address</span>
-          </p>
-          <div className="w-full">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.7979584019827!2d80.24891389999999!3d12.984770699999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525d6155089807%3A0xe8eb6a1c37f7d829!2sTicel%20Bio%20Park%20Phase%202!5e0!3m2!1sen!2sin!4v1734001537223!5m2!1sen!2sin"
-              width="100%"
-              height="150"
-              className="border-0"
-              allowFullScreen=""
-              loading="lazy"
-            ></iframe>
-            <p>
-              20 Sundaram 3rd Street, VYASARPADI Chennai, 600039, CHENNAI, TAMIL
-              NADU
-            </p>
+          <div className="flex items-center space-x-3">
+            <FontAwesomeIcon icon={faMapMarkerAlt} className="text-white text-2xl" />
+            <div>
+              <h3 className="text-lg font-bold">Address</h3>
+              <p>
+                20 Sundaram 3rd Street, VYASARPADI Chennai, 600039, CHENNAI, TAMIL NADU
+              </p>
+            </div>
           </div>
-          <p className="text-lg flex items-center space-x-2">
-            <FontAwesomeIcon icon={faPhone} className="text-white" />
-            <span>Phone</span>
-          </p>
-          <p>
-            +91 8825430312
-            <br />
-            +91 9841014472
-          </p>
-          <p className="text-lg flex items-center space-x-2">
-            <FontAwesomeIcon icon={faEnvelope} className="text-white" />
-            <span>Email</span>
-          </p>
-          <p>a3expresscargo@gmail.com</p>
+
+          <div className="flex items-center space-x-3">
+            <FontAwesomeIcon icon={faPhone} className="text-white text-2xl" />
+            <div>
+              <h3 className="text-lg font-bold">Phone</h3>
+              <p>+91 8825430312</p>
+              <p>+91 9841014472</p>
+            </div>
+          </div>
+
+          <div className="flex items-center space-x-3">
+            <FontAwesomeIcon icon={faEnvelope} className="text-white text-2xl" />
+            <div>
+              <h3 className="text-lg font-bold">Email</h3>
+              <p>a3expresscargo@gmail.com</p>
+            </div>
+          </div>
         </div>
 
         {/* Contact Form Section */}
-        {/* Contact Form Section */}
-        <div className="md:w-1/2 p-6" id="contact-form">
+        <div className="md:w-1/2 p-8 bg-white" id="contact-form">
           <div data-aos="fade-right">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-center text-white">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-center text-blue-600">
               Contact Form
             </h2>
             <form className="space-y-6" onSubmit={handleFormSubmit}>
               <div>
-                <label htmlFor="name" className="block text-white font-medium">
+                <label htmlFor="name" className="block text-blue-600 font-medium">
                   Your Name *
                 </label>
                 <input
                   type="text"
                   id="name"
                   name="name"
-                  className="w-full p-3 border border-gray-300 rounded-lg mt-2"
+                  className="w-full p-3 border border-gray-300 rounded-lg mt-2 focus:outline-none focus:ring focus:ring-blue-300"
                   placeholder="Enter your name"
                   value={formData.name}
                   onChange={handleInputChange}
@@ -150,14 +148,14 @@ const ContactUs = () => {
               </div>
 
               <div>
-                <label htmlFor="name" className="block text-white font-medium">
+                <label htmlFor="phone" className="block text-blue-600 font-medium">
                   Your Phone
                 </label>
                 <input
                   type="text"
-                  id="name"
-                  name="name"
-                  className="w-full p-3 border border-gray-300 rounded-lg mt-2"
+                  id="phone"
+                  name="phone"
+                  className="w-full p-3 border border-gray-300 rounded-lg mt-2 focus:outline-none focus:ring focus:ring-blue-300"
                   placeholder="Enter your phone number"
                   value={formData.phone}
                   onChange={handleInputChange}
@@ -165,14 +163,14 @@ const ContactUs = () => {
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-white font-medium">
+                <label htmlFor="email" className="block text-blue-600 font-medium">
                   Your Email *
                 </label>
                 <input
                   type="email"
                   id="email"
                   name="email"
-                  className="w-full p-3 border border-gray-300 rounded-lg mt-2"
+                  className="w-full p-3 border border-gray-300 rounded-lg mt-2 focus:outline-none focus:ring focus:ring-blue-300"
                   placeholder="Enter your email"
                   value={formData.email}
                   onChange={handleInputChange}
@@ -180,16 +178,13 @@ const ContactUs = () => {
               </div>
 
               <div>
-                <label
-                  htmlFor="message"
-                  className="block text-white font-medium"
-                >
+                <label htmlFor="message" className="block text-blue-600 font-medium">
                   Your Message *
                 </label>
                 <textarea
                   id="message"
                   name="message"
-                  className="w-full p-3 border border-gray-300 rounded-lg mt-2"
+                  className="w-full p-3 border border-gray-300 rounded-lg mt-2 focus:outline-none focus:ring focus:ring-blue-300"
                   rows="3"
                   placeholder="Write your message here"
                   value={formData.message}
@@ -198,75 +193,19 @@ const ContactUs = () => {
               </div>
 
               {responseMessage && (
-                <p className="text-center text-white mt-4">{responseMessage}</p>
+                <p className="text-center text-blue-600 mt-4">{responseMessage}</p>
               )}
 
               <div className="text-center">
                 <button
                   type="submit"
-                  className="px-6 py-3 bg-white text-blue-600 font-bold rounded hover:bg-slate-300 transition duration-300"
+                  className="px-6 py-3 bg-blue-600 text-white font-bold rounded hover:bg-blue-700 transition duration-300"
                   disabled={loading}
                 >
                   {loading ? "Sending..." : "Send Message"}
                 </button>
               </div>
             </form>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section id="faqs" className="py-16 px-6 bg-white">
-        <div className="max-w-6xl mx-auto" data-aos="fade-up">
-          <h2 className="text-3xl font-bold text-blue-400">
-            Frequently Asked Questions
-          </h2>
-          <div className="mt-6 space-y-6">
-            <div className="p-5 bg-gray-100 rounded-lg" data-aos="fade-left">
-              <h3 className="text-xl font-semibold text-blue-400">
-                Q: What services do you offer?
-              </h3>
-              <p className="text-gray-700 mt-2">
-                A: We offer comprehensive export/import management, global
-                logistics solutions, customs brokerage, and consulting services
-                tailored to your needs.
-              </p>
-            </div>
-            <div className="p-5 bg-gray-100 rounded-lg" data-aos="fade-right">
-              <h3 className="text-xl font-semibold text-blue-400">
-                Q: How can I contact your team?
-              </h3>
-              <p className="text-gray-700 mt-2">
-                A: You can reach our team through our{" "}
-                <button
-                  onClick={handleScrollToTop}
-                  className="text-blue-400 hover:underline"
-                >
-                  Contact Us
-                </button>{" "}
-                page or email us directly at contact@A3ExpressCargo.com.
-              </p>
-            </div>
-            <div className="p-5 bg-gray-100 rounded-lg" data-aos="fade-left">
-              <h3 className="text-xl font-semibold text-blue-400">
-                Q: Do you serve international clients?
-              </h3>
-              <p className="text-gray-700 mt-2">
-                A: Yes, we work with clients across the globe, providing
-                customized logistics and consulting services to meet
-                international needs.
-              </p>
-            </div>
-            <div className="p-5 bg-gray-100 rounded-lg" data-aos="fade-right">
-              <h3 className="text-xl font-semibold text-blue-400">
-                Q: Are your resources free to access?
-              </h3>
-              <p className="text-gray-700 mt-2">
-                A: Most of our resources are freely available on our website.
-                However, some advanced materials, like white papers, may require
-                registration.
-              </p>
-            </div>
           </div>
         </div>
       </section>
