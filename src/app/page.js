@@ -1,11 +1,11 @@
 "use client";
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import CountUp from "react-countup";
 import Image from "next/image";
-import Link from 'next/link';
+import Link from "next/link";
 import Footer from "./Footer";
 
 const Home = () => {
@@ -173,147 +173,149 @@ const Home = () => {
             </div>
           </div>
         </section>
-          <h2 className="text-4xl font-bold text-center mb-8 text-black">
-            The Smart Choice for Your Needs
-          </h2>
-          <div className="container">
-            <div className="services">
-              {[
-                {
-                  icon: "📦",
-                  title: "Worldwide Expertise",
-                  description: "Worldwide Expertise in Seamless Shipping Solutions",
-                  image: "services/affor.png",
-                },
-                {
-                  icon: "⏱",
-                  title: "Quick",
-                  description: "Fastest local deliveries to multiple destinations",
-                  image: "services/quick.png",
-                },
-                {
-                  icon: "🚚",
-                  title: "Affordable",
-                  description: "Competitive rates without compromising quality",
-                  image: "services/affor.png",
-                },
-                {
-                  icon: "🌍",
-                  title: "Sustainability",
-                  description: "Eco-friendly practices for a greener planet.",
-                  image: "services/ecofriendly.png",
-                },
-              ].map((service, index) => (
-                <div key={index} className="service-card scroll-animate">
-                   <div className="icon" style={{textAlign:"center"}}>
-                    <span>
-                      {service.icon} {service.title}
-                    </span>
-                  </div>
-                  <img
-                    src={service.image}
-                    alt={service.title}
-                    className="service-image"
-                  />
-                  <p>{service.description}</p>
-                  <Link href="/services" style={{color:"blue"}}>Explore &rarr;</Link>
+        <h2 className="text-4xl font-bold text-center mb-8 text-black">
+          The Smart Choice for Your Needs
+        </h2>
+        <div className="container">
+          <div className="services">
+            {[
+              {
+                icon: "📦",
+                title: "Worldwide Expertise",
+                description:
+                  "Worldwide Expertise in Seamless Shipping Solutions",
+                image: "services/affor.png",
+              },
+              {
+                icon: "⏱",
+                title: "Quick",
+                description:
+                  "Fastest local deliveries to multiple destinations",
+                image: "services/quick.png",
+              },
+              {
+                icon: "🚚",
+                title: "Affordable",
+                description: "Competitive rates without compromising quality",
+                image: "services/affor.png",
+              },
+              {
+                icon: "🌍",
+                title: "Sustainability",
+                description: "Eco-friendly practices for a greener planet.",
+                image: "services/ecofriendly.png",
+              },
+            ].map((service, index) => (
+              <div key={index} className="service-card scroll-animate">
+                <div className="icon" style={{ textAlign: "center" }}>
+                  <span>
+                    {service.icon} {service.title}
+                  </span>
                 </div>
-              ))}
-            </div>
-
-            <div className="footer scroll-animate">
-              &copy; 2024 Smart Shipping Services. All rights reserved.
-            </div>
-
-            <style jsx>{`
-      .container {
-        text-align: center;
-      }
-
-      .services {
-        display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
-        gap: 1rem;
-      }
-
-      .service-card {
-        background: white;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        width: 250px;
-        padding: 1rem;
-        text-align: left;
-        overflow: hidden;
-        transform: translateY(50px);
-        opacity: 0;
-        animation: fadeInUp 1.5s ease forwards;
-      }
-
-      .service-card:nth-child(1) {
-        animation-delay: 0.2s;
-      }
-      .service-card:nth-child(2) {
-        animation-delay: 0.4s;
-      }
-      .service-card:nth-child(3) {
-        animation-delay: 0.6s;
-      }
-      .service-card:nth-child(4) {
-        animation-delay: 0.8s;
-      }
-
-      .service-card img {
-        width: 100%;
-        height: auto;
-        border-radius: 8px;
-        margin: 0.5rem 0;
-      }
-
-      .service-card h2 {
-        font-size: 1.2rem;
-        margin: 0.5rem 0;
-      }
-
-      .service-card p {
-        font-size: 0.9rem;
-        color: #666;
-        line-height: 1.6;
-      }
-
-      .service-card a {
-        color: #5a67d8;
-        text-decoration: none;
-        font-weight: bold;
-        display: inline-block;
-        margin-top: 0.5rem;
-        transition: color 0.3s ease;
-      }
-
-      .service-card a:hover {
-        color: #3b4ccc;
-      }
-
-      .scroll-animate {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.5s ease, transform 0.5s ease;
-      }
-
-      @keyframes fadeInUp {
-        to {
-          transform: translateY(0);
-          opacity: 1;
-        }
-      }
-
-      .footer {
-        margin-top: 2rem;
-        color: #666;
-      }
-    `}</style>
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="service-image"
+                />
+                <p>{service.description}</p>
+                <Link href="/services" style={{ color: "blue" }}>
+                  Explore &rarr;
+                </Link>
+              </div>
+            ))}
           </div>
-        </section>
+
+          <div className="footer scroll-animate">
+            &copy; 2024 Smart Shipping Services. All rights reserved.
+          </div>
+        </div>
+        <style jsx>{`
+          .container {
+            text-align: center;
+          }
+
+          .services {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 1rem;
+          }
+
+          .service-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            padding: 1rem;
+            text-align: left;
+            overflow: hidden;
+            transform: translateY(50px);
+            opacity: 0;
+            animation: fadeInUp 1.5s ease forwards;
+          }
+
+          .service-card:nth-child(1) {
+            animation-delay: 0.2s;
+          }
+          .service-card:nth-child(2) {
+            animation-delay: 0.4s;
+          }
+          .service-card:nth-child(3) {
+            animation-delay: 0.6s;
+          }
+          .service-card:nth-child(4) {
+            animation-delay: 0.8s;
+          }
+
+          .service-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 0.5rem 0;
+          }
+
+          .service-card h2 {
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+          }
+
+          .service-card p {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.6;
+          }
+
+          .service-card a {
+            color: #5a67d8;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 0.5rem;
+            transition: color 0.3s ease;
+          }
+
+          .service-card a:hover {
+            color: #3b4ccc;
+          }
+
+          .scroll-animate {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+          }
+
+          @keyframes fadeInUp {
+            to {
+              transform: translateY(0);
+              opacity: 1;
+            }
+          }
+
+          .footer {
+            margin-top: 2rem;
+            color: #666;
+          }
+        `}</style>
         <Footer />
       </div>
     </>

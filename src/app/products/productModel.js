@@ -1,16 +1,10 @@
-import { arrayBufferToBase64 } from "@/lib/buffer";
-import { useEffect, useState } from "react";
+"use client";
 
-const {
-  faArrowRight,
-  faTimes,
-  faArrowLeft,
-} = require("@fortawesome/free-solid-svg-icons");
-const { FontAwesomeIcon } = require("@fortawesome/react-fontawesome");
-const { default: Image } = require("next/image");
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Image from "next/image";
 
 const ProductDetailsModal = ({ product, onClose, onContact }) => {
-
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 py-auto">
       <div className="relative bg-white p-6 rounded-lg shadow-lg w-11/12 max-w-lg h-[90%] overflow-auto">
@@ -26,13 +20,13 @@ const ProductDetailsModal = ({ product, onClose, onContact }) => {
         {/* Image Carousel */}
         <div className="relative mb-4 w-full flex justify-center items-center">
           <div className="relative w-full h-[30vh] max-h-[400px] flex justify-center items-center">
-              <Image
-                src={product.thumbnail}
-                alt={product.name}
-                className="rounded-md object-contain max-h-full"
-                width={800}
-                height={600}
-              />
+            <Image
+              src={product.thumbnail}
+              alt={product.name}
+              className="rounded-md object-contain max-h-full"
+              width={800}
+              height={600}
+            />
           </div>
         </div>
 
@@ -41,7 +35,9 @@ const ProductDetailsModal = ({ product, onClose, onContact }) => {
           <div className="text-gray-600 font-semibold">Category:</div>
           <div className="text-gray-800">{product.category}</div>
           <div className="text-gray-600 font-semibold">Price:</div>
-          <div className="text-gray-800">₹{product.amount.toLocaleString()}</div>
+          <div className="text-gray-800">
+            ₹{product.amount.toLocaleString()}
+          </div>
           <div className="text-gray-600 font-semibold">Stock:</div>
           <div className="text-gray-800">{product.stock}</div>
         </div>

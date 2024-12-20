@@ -6,7 +6,6 @@ import "aos/dist/aos.css";
 import Image from "next/image";
 import ProductDetailsModal from "./productModel";
 import ContactModal from "./contactModal";
-import { arrayBufferToBase64 } from "@/lib/buffer";
 
 const Products = () => {
   const [searchTerm, setSearchTerm] = useState("");
