@@ -9,7 +9,7 @@ export const POST = async (req) => {
   // Ensure database connection is established
   await dbConnect();
 
-  const { email, name, message } = await req.json(); // Parse JSON from request body
+  const { email, name, phone, message } = await req.json(); // Parse JSON from request body
 
   // Validate input fields
   if (!email || !name || !message) {
@@ -27,6 +27,7 @@ export const POST = async (req) => {
       email,
       name,
       message,
+      phone
     });
 
     // Save the contact message to the database
@@ -34,7 +35,7 @@ export const POST = async (req) => {
 
     // Prepare the email content
     const clientSubject = "Contact Message Confirmation";
-    const clientHTML = getClientHTML(name, message, process.env.COMPANY_EMAIL);
+    const clientHTML = getClientHTML(name, phone, message, process.env.COMPANY_EMAIL);
 
     // Send the email
     await sendEmail({
@@ -45,7 +46,7 @@ export const POST = async (req) => {
 
     // Prepare the email content
     const companySubject = "Contact Message Confirmation";
-    const companyHTML = getCompanyHTML(name, email, message);
+    const companyHTML = getCompanyHTML(name, phone, email, message);
 
     // Send the email
     await sendEmail({

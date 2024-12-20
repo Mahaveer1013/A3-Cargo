@@ -4,9 +4,10 @@ import React, { useEffect, useState, useRef } from "react";
 import { useInView } from "react-intersection-observer";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import ContactBanner from "../components/ContactBanner";
-import CountUp from 'react-countup';
+import CountUp from "react-countup";
 import Image from "next/image";
+import Link from 'next/link';
+import Footer from "./Footer";
 
 const Home = () => {
   useEffect(() => {
@@ -21,14 +22,8 @@ const Home = () => {
   };
 
   // Set up ref and inView to detect when the Stats section is in the viewport
-  const statsRef = useRef(null);
-  const [inView, setInView] = useState(false);
-
-  const { ref, inView: statsInView } = useInView({
-    triggerOnce: true, // Trigger animation only once
-    onChange: (inView) => {
-      setInView(inView);
-    },
+  const { ref, inView } = useInView({
+    triggerOnce: true,
   });
 
   return (
@@ -36,32 +31,6 @@ const Home = () => {
       <div className="font-sans overflow-hidden">
         {/* Hero Banner */}
         <section className="bg-gradient-to-r from-blue-950 to-blue-500 text-white h-[calc(100vh-64px)] flex flex-col justify-center items-center relative overflow-hidden">
-          {/* Scrolling background images */}
-          {/* <div className="absolute inset-0 overflow-hidden z-0">
-          <div className="infinite-scroll flex absolute inset-0 animate-scroll">
-            <img
-              src="https://via.placeholder.com/600x400"
-              alt="Image 1"
-              className="w-full h-auto object-cover"
-            />
-            <img
-              src="https://via.placeholder.com/600x400"
-              alt="Image 2"
-              className="w-full h-auto object-cover"
-            />
-            <img
-              src="https://via.placeholder.com/600x400"
-              alt="Image 3"
-              className="w-full h-auto object-cover"
-            />
-            <img
-              src="https://via.placeholder.com/600x400"
-              alt="Image 4"
-              className="w-full h-auto object-cover"
-            />
-          </div>
-        </div> */}
-
           <div className="relative z-10 text-center">
             <h1 className="text-5xl font-bold mb-6 animate__animated animate__fadeInUp">
               Global Reach, Local Expertise
@@ -181,74 +150,103 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
             <div className="p-6">
               <h3 className="text-5xl font-bold text-blue-400 mb-2">
-                {inView ? <CountUp start={0} end={500} duration={2} /> : 0}
+                {inView ? <CountUp start={0} end={500} duration={5} /> : 0}
               </h3>
               <p className="text-lg">Happy Clients</p>
             </div>
             <div className="p-6">
               <h3 className="text-5xl font-bold text-blue-400 mb-2">
-                {inView ? <CountUp start={0} end={1200} duration={2} /> : 0}
+                {inView ? <CountUp start={0} end={1200} duration={5} /> : 0}
               </h3>
               <p className="text-lg">Successful Shipments</p>
             </div>
             <div className="p-6">
               <h3 className="text-5xl font-bold text-blue-400 mb-2">
-                {inView ? <CountUp start={0} end={99} duration={2} /> : 0}%
+                {inView ? <CountUp start={0} end={99} duration={5} /> : 0}%
               </h3>
               <p className="text-lg">Customer Satisfaction</p>
             </div>
             <div className="p-6">
               <h3 className="text-5xl font-bold text-blue-400 mb-2">
-                {inView ? <CountUp start={0} end={20} duration={2} /> : 0}+
+                {inView ? <CountUp start={0} end={20} duration={5} /> : 0}+
               </h3>
               <p className="text-lg">Years of Excellence</p>
             </div>
           </div>
         </section>
-
         {/* Why Choose Us */}
         <section className="py-16 px-6 bg-gray-100">
-          <div className="max-w-6xl mx-auto text-center">
-            <h2 className="text-4xl font-bold mb-12" data-aos="fade-up">
-              Why Choose Us?
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {[
-                {
-                  title: "Global Expertise",
-                  description: "Decades of experience in global trade.",
-                },
-                {
-                  title: "Affordable Pricing",
-                  description:
-                    "Competitive rates without compromising quality.",
-                },
-                {
-                  title: "Reliable Services",
-                  description: "On-time delivery with exceptional reliability.",
-                },
-                {
-                  title: "Sustainability",
-                  description: "Eco-friendly practices for a greener planet.",
-                },
-              ].map((reason, index) => (
-                <div
-                  key={reason.title}
-                  className="bg-white border p-6 rounded shadow-md hover:shadow-lg transition"
-                  data-aos="fade-up"
-                  data-aos-delay={`${200 * (index + 1)}`}
-                >
-                  <h3 className="text-2xl font-semibold mb-2">
-                    {reason.title}
-                  </h3>
-                  <p className="text-gray-600">{reason.description}</p>
-                </div>
-              ))}
+          <div
+            style={{
+              borderColor: "black",
+              borderWidth: "2px",
+              padding: "15px",
+              borderRadius: "15px",
+              paddingBottom: "30px",
+              background:
+                "linear-gradient(135deg, #1e3a8a, #3b82f6, #60a5fa, #93c5fd, #bfdbfe)",
+              backgroundSize: "400% 400%",
+              animation: "blueGradientAnimation 15s ease infinite",
+            }}
+          >
+            <div className="max-w-6xl mx-auto text-center">
+              <h2 className="text-4xl font-bold mb-12" data-aos="fade-up">
+                Discover the Difference with Us
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {[
+                  {
+                    img: "https://media.istockphoto.com/id/649124858/photo/world-management-team-in-office-silhouette.jpg?s=612x612&w=0&k=20&c=s2R8IRTn8pe5ympBbFCRu4eLl3xkjYkgtJzipaVA3RU=",
+                    title: "Global Expertise",
+                    description: "Decades of experience in global trade.",
+                  },
+                  {
+                    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJpOb_ut9bWmuDsiGfjiD2EqV8NkRoK0GNIw&s",
+                    title: "Affordable Pricing",
+                    description:
+                      "Competitive rates without compromising quality.",
+                  },
+                  {
+                    img: "https://www.pngitem.com/pimgs/m/43-431625_quality-service-reliability-hd-png-download.png",
+                    title: "Reliable Services",
+                    description: "On-time delivery with exceptional reliability.",
+                  },
+                  {
+                    img: "https://t4.ftcdn.net/jpg/05/55/33/01/360_F_555330189_cKKtlJA502lcdqXveULFTcL5Rgg5F0JA.jpg",
+                    title: "Sustainability",
+                    description: "Eco-friendly practices for a greener planet.",
+                  },
+                ].map((reason, index) => (
+                  <div
+                    key={reason.title}
+                    className="bg-white border p-6 rounded shadow-md hover:shadow-lg transition"
+                    data-aos="fade-up"
+                    data-aos-delay={`${200 * (index + 1)}`}
+                  >
+                    <img
+                      style={{
+                        width: "200px",
+                        height: "150px",
+                        objectFit: "cover",
+                      }}
+                      src={reason.img}
+                      alt={reason.title}
+                      className="w-full h-48 object-cover rounded mb-4"
+                    />
+                    <h3 className="text-2xl font-semibold mb-2">{reason.title}</h3>
+                    <p className="text-gray-600">{reason.description}</p>
+                    <br />
+                    <Link href="/services" className="text-blue-500 hover:underline">
+                      Read More...
+                    </Link>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
+        <Footer />
       </div>
-      <ContactBanner />
     </>
   );
 };

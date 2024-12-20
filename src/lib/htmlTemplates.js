@@ -1,4 +1,4 @@
-export const getClientHTML = (name, message, company_email) => {
+export const getClientHTML = (name, phone, message, company_email) => {
   return `<html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -73,6 +73,7 @@ export const getClientHTML = (name, message, company_email) => {
       </div>
       <div class="email-body">
         <p>Dear ${name},</p>
+        ${phone && `<p>Phone ${phone},</p>`}
         <p>Thank you for getting in touch with us. We’ve received your message and our team will get back to you as soon as possible.</p>
         <p><strong>Your Message:</strong></p>
         <p>${message}</p>
@@ -88,7 +89,7 @@ export const getClientHTML = (name, message, company_email) => {
 </html>`;
 };
 
-export const getCompanyHTML = (name, email, message) => {
+export const getCompanyHTML = (name, phone, email, message) => {
     return `<html lang="en">
         <head>
           <meta charset="UTF-8" />
@@ -164,6 +165,7 @@ export const getCompanyHTML = (name, email, message) => {
             <div class="email-body">
               <p><strong>Name:</strong> ${name}</p>
               <p><strong>Email:</strong> ${email}</p>
+              ${phone && `<p><strong>Mobile Number:</strong> ${phone}</p>`}
               <p><strong>Message:</strong></p>
               <p>${message}</p>
             </div>

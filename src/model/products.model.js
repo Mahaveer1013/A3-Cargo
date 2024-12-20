@@ -12,39 +12,7 @@ const productSchema = new mongoose.Schema(
       required: true,
     },
     thumbnail: {
-      type: {
-        name: {
-          type: String,
-          required: true,
-        },
-        data: {
-          type: Buffer,
-          required: true,
-        },
-        contentType: {
-          type: String,
-          required: true,
-        },
-      },
-      required: true,
-    },
-    images: {
-      type: [
-        {
-          name: {
-            type: String,
-            required: true,
-          },
-          data: {
-            type: Buffer,
-            required: true,
-          },
-          contentType: {
-            type: String,
-            required: true,
-          },
-        },
-      ],
+      type: String,
       required: true,
     },
     amount: {
