@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useEffect, useState, useRef } from "react";
 import { useInView } from "react-intersection-observer";
 import AOS from "aos";
@@ -68,7 +67,7 @@ const Home = () => {
               <Image
                 width={1000}
                 height={1000}
-                src="/image2.webp"
+                src="/about.avif"
                 alt="About Us"
                 className="w-full rounded-lg shadow-md"
               />
@@ -174,75 +173,145 @@ const Home = () => {
             </div>
           </div>
         </section>
-        {/* Why Choose Us */}
-        <section className="py-16 px-6 bg-gray-100">
-          <div
-            style={{
-              borderColor: "black",
-              borderWidth: "2px",
-              padding: "15px",
-              borderRadius: "15px",
-              paddingBottom: "30px",
-              background:
-                "linear-gradient(135deg, #1e3a8a, #3b82f6, #60a5fa, #93c5fd, #bfdbfe)",
-              backgroundSize: "400% 400%",
-              animation: "blueGradientAnimation 15s ease infinite",
-            }}
-          >
-            <div className="max-w-6xl mx-auto text-center">
-              <h2 className="text-4xl font-bold mb-12" data-aos="fade-up">
-                Discover the Difference with Us
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                {[
-                  {
-                    img: "https://media.istockphoto.com/id/649124858/photo/world-management-team-in-office-silhouette.jpg?s=612x612&w=0&k=20&c=s2R8IRTn8pe5ympBbFCRu4eLl3xkjYkgtJzipaVA3RU=",
-                    title: "Global Expertise",
-                    description: "Decades of experience in global trade.",
-                  },
-                  {
-                    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJpOb_ut9bWmuDsiGfjiD2EqV8NkRoK0GNIw&s",
-                    title: "Affordable Pricing",
-                    description:
-                      "Competitive rates without compromising quality.",
-                  },
-                  {
-                    img: "https://www.pngitem.com/pimgs/m/43-431625_quality-service-reliability-hd-png-download.png",
-                    title: "Reliable Services",
-                    description: "On-time delivery with exceptional reliability.",
-                  },
-                  {
-                    img: "https://t4.ftcdn.net/jpg/05/55/33/01/360_F_555330189_cKKtlJA502lcdqXveULFTcL5Rgg5F0JA.jpg",
-                    title: "Sustainability",
-                    description: "Eco-friendly practices for a greener planet.",
-                  },
-                ].map((reason, index) => (
-                  <div
-                    key={reason.title}
-                    className="bg-white border p-6 rounded shadow-md hover:shadow-lg transition"
-                    data-aos="fade-up"
-                    data-aos-delay={`${200 * (index + 1)}`}
-                  >
-                    <img
-                      style={{
-                        width: "200px",
-                        height: "150px",
-                        objectFit: "cover",
-                      }}
-                      src={reason.img}
-                      alt={reason.title}
-                      className="w-full h-48 object-cover rounded mb-4"
-                    />
-                    <h3 className="text-2xl font-semibold mb-2">{reason.title}</h3>
-                    <p className="text-gray-600">{reason.description}</p>
-                    <br />
-                    <Link href="/services" className="text-blue-500 hover:underline">
-                      Read More...
-                    </Link>
+          <h2 className="text-4xl font-bold text-center mb-8 text-black">
+            The Smart Choice for Your Needs
+          </h2>
+          <div className="container">
+            <div className="services">
+              {[
+                {
+                  icon: "📦",
+                  title: "Worldwide Expertise",
+                  description: "Worldwide Expertise in Seamless Shipping Solutions",
+                  image: "services/affor.png",
+                },
+                {
+                  icon: "⏱",
+                  title: "Quick",
+                  description: "Fastest local deliveries to multiple destinations",
+                  image: "services/quick.png",
+                },
+                {
+                  icon: "🚚",
+                  title: "Affordable",
+                  description: "Competitive rates without compromising quality",
+                  image: "services/affor.png",
+                },
+                {
+                  icon: "🌍",
+                  title: "Sustainability",
+                  description: "Eco-friendly practices for a greener planet.",
+                  image: "services/ecofriendly.png",
+                },
+              ].map((service, index) => (
+                <div key={index} className="service-card scroll-animate">
+                   <div className="icon" style={{textAlign:"center"}}>
+                    <span>
+                      {service.icon} {service.title}
+                    </span>
                   </div>
-                ))}
-              </div>
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="service-image"
+                  />
+                  <p>{service.description}</p>
+                  <Link href="/services" style={{color:"blue"}}>Explore &rarr;</Link>
+                </div>
+              ))}
             </div>
+
+            <div className="footer scroll-animate">
+              &copy; 2024 Smart Shipping Services. All rights reserved.
+            </div>
+
+            <style jsx>{`
+      .container {
+        text-align: center;
+      }
+
+      .services {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .service-card {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 250px;
+        padding: 1rem;
+        text-align: left;
+        overflow: hidden;
+        transform: translateY(50px);
+        opacity: 0;
+        animation: fadeInUp 1.5s ease forwards;
+      }
+
+      .service-card:nth-child(1) {
+        animation-delay: 0.2s;
+      }
+      .service-card:nth-child(2) {
+        animation-delay: 0.4s;
+      }
+      .service-card:nth-child(3) {
+        animation-delay: 0.6s;
+      }
+      .service-card:nth-child(4) {
+        animation-delay: 0.8s;
+      }
+
+      .service-card img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin: 0.5rem 0;
+      }
+
+      .service-card h2 {
+        font-size: 1.2rem;
+        margin: 0.5rem 0;
+      }
+
+      .service-card p {
+        font-size: 0.9rem;
+        color: #666;
+        line-height: 1.6;
+      }
+
+      .service-card a {
+        color: #5a67d8;
+        text-decoration: none;
+        font-weight: bold;
+        display: inline-block;
+        margin-top: 0.5rem;
+        transition: color 0.3s ease;
+      }
+
+      .service-card a:hover {
+        color: #3b4ccc;
+      }
+
+      .scroll-animate {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+      }
+
+      @keyframes fadeInUp {
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .footer {
+        margin-top: 2rem;
+        color: #666;
+      }
+    `}</style>
           </div>
         </section>
         <Footer />

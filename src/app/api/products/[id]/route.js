@@ -158,39 +158,3 @@ export const DELETE = async (req, { params }) => {
     );
   }
 };
-
-// export const GET = async (req, { params }) => {
-//   // Ensure database connection is established
-//   await verifyToken(req);
-//   await dbConnect();
-
-//   const { id } = await params;
-
-//   try {
-//     // If an `id` is provided in query params, return a single product
-//     if (id) {
-//       const product = await Product.findOne({ _id: id });
-
-//       if (!product) {
-//         return new Response(JSON.stringify({ message: "Product not found" }), {
-//           status: 404,
-//         });
-//       }
-
-//       return new Response(JSON.stringify(product), { status: 200 });
-//     }
-
-//     // If no `id`, return a list of all products
-//     const products = await Product.find();
-
-//     return new Response(JSON.stringify(products), { status: 200 });
-//   } catch (error) {
-//     return new Response(
-//       JSON.stringify({
-//         error: "Error fetching products",
-//         message: error.message,
-//       }),
-//       { status: 500 }
-//     );
-//   }
-// };
