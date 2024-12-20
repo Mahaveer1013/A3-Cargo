@@ -87,7 +87,7 @@ const Home = () => {
                   title: "Export Services",
                   description:
                     "Comprehensive export services to global destinations.",
-                  img: "/services/export.png",
+                  img: "/services/export.webp",
                 },
                 {
                   title: "Logistics",
@@ -104,18 +104,18 @@ const Home = () => {
                   title: "Consulting",
                   description:
                     "Expert guidance for seamless import/export processes.",
-                  img: "/services/consulting.png",
+                  img: "/services/consulting.jpg",
                 },
                 {
                   title: "Warehousing",
                   description: "State-of-the-art warehousing solutions.",
-                  img: "/services/warehousing.png",
+                  img: "/services/warehouse.jpg",
                 },
                 {
                   title: "Freight Forwarding",
                   description:
                     "Global freight forwarding at competitive rates.",
-                  img: "/services/frieght.png",
+                  img: "/services/freight-forwarding.png",
                 },
               ].map((service, index) => (
                 <div
