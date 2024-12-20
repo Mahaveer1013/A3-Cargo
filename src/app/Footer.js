@@ -1,5 +1,5 @@
 // components/Footer.js
-import Image from "next/image";
+import Link from "next/link";
 export default function Footer() {
     return (
       <div className="footer-container">
@@ -18,18 +18,19 @@ export default function Footer() {
           <img src="https://via.placeholder.com/100x40?text=Razorpay" alt="Razorpay" />
           <img src="https://via.placeholder.com/100x40?text=EASYECOM" alt="EASYECOM" />
           <img src="https://via.placeholder.com/100x40?text=BIKAYI" alt="BIKAYI" />
-          <img src="https://via.placeholder.com/100x40?text=StoreHippo" alt="StoreHippo" />
+          {/* <img src="https://via.placeholder.com/100x40?text=StoreHippo" alt="StoreHippo" />
           <img src="https://via.placeholder.com/100x40?text=PrestaShop" alt="PrestaShop" />
           <img src="https://via.placeholder.com/100x40?text=WIX" alt="WIX" />
           <img src="https://via.placeholder.com/100x40?text=Etsy" alt="Etsy" />
           <img src="https://via.placeholder.com/100x40?text=Amazon" alt="Amazon" />
-          <img src="https://via.placeholder.com/100x40?text=Indiamart" alt="Indiamart" />
+          <img src="https://via.placeholder.com/100x40?text=Indiamart" alt="Indiamart" /> */}
         </div>
   
         <div className="footer-banner">
           <div className="footer-banner-text">
             <h1>Ship Delightful Experiences With Shiprocket</h1>
-            <button>Get in touch</button>
+            <Link href="/about"><button>Get in touch</button></Link>
+              
           </div>
           <img src="happyCustomer.png" alt="Happy User" />
         </div>
