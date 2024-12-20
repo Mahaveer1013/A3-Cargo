@@ -14,7 +14,6 @@ const NewProductForm = ({ submitForm, closeModal }) => {
   });
 
   const [thumbnail, setThumbnail] = useState(null);
-  const [displayImages, setDisplayImages] = useState([]);
   const [error, setError] = useState("");
 
   const handleInputChange = (e) => {
@@ -28,8 +27,6 @@ const NewProductForm = ({ submitForm, closeModal }) => {
     const files = e.target.files;
     if (type === "thumbnail") {
       setThumbnail(files[0]);
-    } else if (type === "displayImages") {
-      setDisplayImages(Array.from(files));
     }
   };
 
@@ -48,10 +45,6 @@ const NewProductForm = ({ submitForm, closeModal }) => {
     formDataToSend.append("description", formData.description);
     formDataToSend.append("stock", formData.stock);
     formDataToSend.append("thumbnail", thumbnail);
-
-    displayImages.forEach((image, index) => {
-      formDataToSend.append(`displayImages[${index}]`, image);
-    });
 
     try {
       await submitForm(formDataToSend);
@@ -111,23 +104,6 @@ const NewProductForm = ({ submitForm, closeModal }) => {
               onChange={(e) => handleFileChange(e, "thumbnail")}
               className="w-full"
               required
-            />
-          </div>
-
-          <div className="mb-4">
-            <label
-              htmlFor="displayImages"
-              className="block text-gray-700 font-medium mb-2"
-            >
-              Display Images (Optional, max 2)
-            </label>
-            <input
-              type="file"
-              id="displayImages"
-              accept="image/*"
-              multiple
-              onChange={(e) => handleFileChange(e, "displayImages")}
-              className="w-full"
             />
           </div>
 

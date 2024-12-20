@@ -129,9 +129,7 @@ const Products = () => {
               className="bg-white rounded-lg shadow-md p-4 flex flex-col items-center hover:shadow-lg transform hover:scale-105 transition duration-300"
             >
               <Image
-                src={`data:${
-                  product.thumbnail.contentType
-                };base64,${arrayBufferToBase64(product.thumbnail.data.data)}`}
+                src={product.thumbnail}
                 alt={product.name}
                 className="w-full h-48 object-cover rounded-md"
                 width={300}

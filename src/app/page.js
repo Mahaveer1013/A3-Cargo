@@ -5,9 +5,8 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import CountUp from "react-countup";
 import Image from "next/image";
+import Link from 'next/link';
 import Footer from "./Footer";
-import Link from "next/link";
-
 
 const Home = () => {
   useEffect(() => {
@@ -174,7 +173,6 @@ const Home = () => {
             </div>
           </div>
         </section>
-        <section className="py-16 bg-white" ref={ref}>
           <h2 className="text-4xl font-bold text-center mb-8 text-black">
             The Smart Choice for Your Needs
           </h2>
@@ -316,7 +314,6 @@ const Home = () => {
     `}</style>
           </div>
         </section>
-
         <Footer />
       </div>
     </>
